@@ -1,0 +1,26 @@
+\begin{tikzpicture}\footnotesize
+  \tikzset{venn circle/.style={circle,minimum width=2cm,fill=#1,opacity=0.4}}
+  \node [venn circle=white,minimum width=4cm,draw] (A) at (0,0.3) {};
+  \node  at (0,1.95) 			{State space};
+  \node [venn circle = red!50!white, ellipse,minimum height=3cm, minimum width=3.6cm] (L) at (0,0.3) {};
+  \node  at (0,1.2) 		{poly-size \limdd};
+  \node [venn circle = blue!70!white,text width=1.3cm,align=center,rotate=90,ellipse,minimum height=2cm, minimum width=2.5cm] (B) at (-.6,-.2) {};
+  \node[text width=1.3cm,align=center]  at (-.6,-1.)
+  							{poly-size MPS};
+  \node [venn circle = yellow!90!white,text width=1.3cm,align=center, minimum width=1.8cm] (B) at (-.6,.1) 
+  							{poly-size \qmdd};
+  \node [venn circle = green!40!white,text width=1cm,align=center, minimum width=1.5cm] (C) at (.8,.1)
+  							{Stabilizer states};
+
+  \node[,inner sep=0pt] (a) at (1,-2) 		{cluster states};
+  \node[fill=black,circle,inner sep=1.5pt] (b) at (1,-.4) {};
+	\draw[-,bend left=-20] (a) to (b);
+
+  \node[fill=black,circle,inner sep=1.5pt] (b) at (.5,-.8) {};
+  \node[,inner sep=0pt] (a) at (-.55,-2.02) 		{(pseudo)};
+	\draw[-,bend left=-20] (a.north) to (b);
+
+%  \node (a) at (.5,2.5) 		{pseudo cluster state};
+%  \node[fill=black,circle,inner sep=1.5pt] (b) at (1.4,1.) {};
+%	\draw[-,bend left=20] (a) to (b);
+\end{tikzpicture}  

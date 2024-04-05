@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="199.48196mm"
+   height="150.27858mm"
+   viewBox="0 0 199.48196 150.27858"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="venn_diagram.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="418.1525"
+     inkscape:cy="178.1426"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1678"
+     inkscape:window-height="1029"
+     inkscape:window-x="0"
+     inkscape:window-y="19"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(12.461721,-45.723804)">
+    <ellipse
+       style="opacity:1;fill:#aade87;fill-opacity:0.36318413;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path815"
+       cx="104.51042"
+       cy="120.86309"
+       rx="82.209824"
+       ry="74.839287" />
+    <ellipse
+       style="opacity:1;fill:#ff7f2a;fill-opacity:0.76616911;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path836"
+       cx="102.80952"
+       cy="128.6116"
+       rx="77.10714"
+       ry="53.861607" />
+    <ellipse
+       style="opacity:1;fill:#0000ff;fill-opacity:0.40796024;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path817"
+       cx="74.536903"
+       cy="120.48512"
+       rx="37.797619"
+       ry="36.663689" />
+    <ellipse
+       style="opacity:1;fill:#ffd42a;fill-opacity:0.61691541;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path817-3"
+       cx="130.0238"
+       cy="120.86308"
+       rx="34.017857"
+       ry="36.663689" />
+    <ellipse
+       style="opacity:1;fill:none;fill-opacity:0.40796024;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path817-6"
+       cx="74.536896"
+       cy="120.48512"
+       rx="37.797619"
+       ry="36.663689" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.32737"
+       y="62.276783"
+       id="text857"><tspan
+         sodipodi:role="line"
+         id="tspan855"
+         x="73.32737"
+         y="62.276783"
+         style="stroke-width:0.26458332">state vector</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="114.47843"
+       y="119.21203"
+       id="text857-7"><tspan
+         sodipodi:role="line"
+         id="tspan855-5"
+         x="114.47843"
+         y="119.21203"
+         style="stroke-width:0.26458332">poly-size</tspan><tspan
+         sodipodi:role="line"
+         x="114.47843"
+         y="132.44119"
+         style="stroke-width:0.26458332"
+         id="tspan887"> QMDDs</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="42.018467"
+       y="117.8136"
+       id="text857-7-3"><tspan
+         sodipodi:role="line"
+         x="42.018467"
+         y="117.8136"
+         style="stroke-width:0.26458332"
+         id="tspan887-6">stabilizer</tspan><tspan
+         sodipodi:role="line"
+         x="42.018467"
+         y="131.04277"
+         style="stroke-width:0.26458332"
+         id="tspan912">formalism</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.300804"
+       y="164.30711"
+       id="text857-7-3-2"><tspan
+         sodipodi:role="line"
+         x="73.300804"
+         y="164.30711"
+         style="stroke-width:0.26458332"
+         id="tspan912-1"> poly-size</tspan><tspan
+         sodipodi:role="line"
+         x="73.300804"
+         y="177.53629"
+         style="stroke-width:0.26458332"
+         id="tspan937">Iso-QMDDs</tspan></text>
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path939"
+       cx="64.31012"
+       cy="143.48752"
+       r="2.7" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.06500006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 63.877975,143.91964 24.946428,176.04761"
+       id="path941"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-12.889946"
+       y="183.73265"
+       id="text857-7-3-2-2"><tspan
+         sodipodi:role="line"
+         x="-12.889946"
+         y="183.73265"
+         style="font-size:7.76111126px;stroke-width:0.26458332"
+         id="tspan970">grid graph state</tspan></text>
+  </g>
+</svg>

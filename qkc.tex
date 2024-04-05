@@ -1,0 +1,117 @@
+\documentclass[8pt,aspectratio=43,englisht,xcolor={usenames,dvipsnames}]{beamer}
+
+
+% BIBLATEX stuff
+\usepackage[english]{babel}
+\usepackage[citestyle=numeric-comp,bibstyle=ieee,sorting=none,minbibnames=5,maxbibnames=5,defernumbers=true,firstinits=true,natbib=true]{biblatex}
+\addbibresource{lit.bib}
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+\DefineBibliographyStrings{english}{andothers = {{et\, al\adddot}},}
+\AtEveryBibitem{\clearfield{pages}} 
+\AtEveryBibitem{\clearfield{doi}} 
+\AtEveryBibitem{\clearfield{url}} 
+\AtEveryBibitem{\clearfield{publisher}} 
+\AtEveryBibitem{\clearfield{number}} 
+\AtEveryBibitem{\clearfield{month}} 
+\AtEveryBibitem{\clearfield{issn}} 
+
+
+% PREAMBLE / MACROS
+\graphicspath{{graphics/}}
+\include{preamble}
+\include{macros}
+
+
+% THEME
+\usetheme[style=fwn]{leidenuniv}
+\setbeamertemplate{navigation symbols}{}
+% uncomment next line to let framesubtitle have palette primary color
+%\setbeamercolor{framesubtitle}{use={palette primary},fg=palette primary.bg}
+
+% uncomment next line to remove navigation symbols from the pdf
+\title{Data Structures for Quantum Information}
+%\subtitle{A Decision Diagram for Simulation
+%		\only<2->{\alert{\&  Verification}} of Quantum Computing}
+\author{Alfons Laarman}
+\institute[LIACS]{Taipei}
+\usepackage{datetime}
+\newdate{date}{11}{01}{2024}
+\date{\displaydate{date}}
+\titlegraphic{
+%	\includegraphics[height=0.3\paperheight]{logo-universiteitleiden-english.pdf}
+\vspace{1.6cm}
+\small
+Tim Coopmans\\
+Vedran Dunjko\\
+David Elkouss\\
+Lieuwe Vinkhuijzen\\
+}
+
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+
+
+
+\colorlet{green}{ForestGreen}
+\colorlet{blue}{RoyalBlue}
+\colorlet{purple}{Orchid}
+\colorlet{red}{Red}
+
+
+
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%\begin{frame}
+%	\tableofcontents
+%\end{frame}
+
+
+
+\begin{frame}
+
+
+$\ket 0\ket{\text{stab}} + \ket 1 \ket{\text{IP}}$\\
+where $\braket{\vec x \vec y | IP} = \braket{\vec x |\vec y}$
+
+
+$\ket 0\ket{\text{stab}} + \ket 1 \ket{\text{sum}}$\\
+where
+$\ket{\text{sum}} \defn \ket{+}^{\otimes n} + \ket{T}^{\otimes n}$\\
+where 
+$\ket T \defn \ket 0 + e^{i\pi/4} \ket 1$
+	
+\end{frame}
+
+
+\appendix
+\backupbegin
+%\input{1_quantum101}
+\backupend
+
+
+%\begin{comment}
+
+%\begin{comment}
+
+
+
+
+
+
+
+
+
+
+\end{document}

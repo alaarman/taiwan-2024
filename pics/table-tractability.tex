@@ -1,0 +1,38 @@
+\caption{Tractability of queries and manipulations on the data structures analyzed in this paper (single application of the operation). 
+A \Yes means the data structure supports the operation in polytime, a \Yar means supported in randomized polytime, and \No means the data structure does not support the operation in polytime.
+A \Cond means the operation is not supported in polytime unless $P=NP$.
+? means unknown.
+The table only considers deterministic algorithms (for some ? a probabilistic algorithm exists, e.g., for \inprod on RBM).
+Novel results are blue and underlined.
+}
+\setlength{\tabcolsep}{4pt}
+\def\arraystretch{1.1}
+\footnotesize
+\centering
+\begin{tabular}{|l@{\hspace{10pt}}|| *{5}{c|}| *{20}{c|}}
+\hline
+ & \multicolumn{5}{c||}{Queries} & \multicolumn{7}{c|}{Manipulation operations} \\
+	& \rot{\samp} & \rot{\pro} & \rot{\eq}  & \rot{\inprod} & \multicolumn{1}{R{90}{0em}||}{\fid}
+	& \rot{\addi} & \rot\had & \rot{\xyz} & \rot\cz & \rot{\swap} & \rot{\loc} & \rot{\T-gate} \\
+\hline
+Vector& \Yar & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes \\
+\hline
+ADD \supp{~~~~~~~~~~\hfill \cref{app:trac:add}}  	& \Yar	& \Yes	& \Yes	& \Yes & \Yes
+		& \Yes	& \Yes 	& \Yes	& \Yes	& \Yes	& \Yes	& \Yes \\
+\hline
+\qmdd \supp{\hfill \cref{app:trac:qmdd}}
+		& \Yar	& \Yes	& \Yes	& \novelunderline{\Yes} & \novelunderline{\Yes}
+		& \No	& \novelunderline{\No} 	& \novelunderline{\Yes}	& \novelunderline{\Yes}	& \novelunderline{\No}	& \novelunderline{\No}	& \novelunderline{\Yes} \\
+\hline 
+	\limdd \supp{\hfill \cref{app:trac:limdd}}
+	 	& \Yar	& \Yes	& \Yes	& \novelunderline{\Cond} & \novelunderline{\Cond}
+		& \novelunderline{\No}	& \novelunderline{\No}	& \Yes	& \Yes	& \novelunderline{\No}	& \novelunderline{\No}	& \novelunderline{\Yes}  \\
+\hline 
+MPS   \supp{\hfill \cref{app:trac:mps}}
+	  & \Yar & \Yes & \Yes & \Yes & \Yes & \Yes 
+	  & \Yes & \Yes & \Yes & \Yes & \Yes & \Yes  \\
+\hline 
+	RBM   \supp{\hfill \cref{app:trac:rbm}}
+	 & \Yar    & ? & ? & \novelunderline{\Cond} & \novelunderline{\Cond} & ? & ? & \Yes & \Yes & \Yes & ? & \Yes \\
+\hline 
+\end{tabular}

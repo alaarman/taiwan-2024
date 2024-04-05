@@ -1,0 +1,22 @@
+
+
+\centering
+\scalebox{.7}{
+	\begin{tikzpicture}[node distance=.5cm,minimum height=.5cm]
+
+		\node[draw] (mps) 			   {MPS};
+		\node[draw, left = 1cm of mps] (limdd) {\limdd};
+		\node[draw,  below = of limdd] (qmdd) {\qmdd};
+		\node[draw, below = of qmdd] (add) {ADD};
+
+		\draw[\bigarrowhead, solid] (qmdd.north)     to (limdd.south);
+		\draw[\bigarrowhead, solid] (add.north)      to (qmdd.south);
+		\draw[\bigarrowhead, solid, bend right = 20] (qmdd.east) to (mps.south);
+	\end{tikzpicture}
+}
+%	\caption{Rapidity relations between data structures considered here.
+%	A solid arrow $D_1\to D_2$ means $D_2$ is at least as rapid as $D_1$ 
+%	for all operations satisfying \ref{i:omega}~and~\ref{i:rm}~of~\cref{thm:sufficient-condition-rapidity}.
+%	}
+%	\label{fig:rapidity}
+

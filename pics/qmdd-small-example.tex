@@ -1,0 +1,175 @@
+
+~~~
+\begin{tikzpicture}[
+    scale=0.3,
+    every path/.style={>=latex},
+    every node/.style={},
+    inner sep=0pt,
+    minimum size=0.5cm,
+    line width=1pt,
+    node distance=1cm,
+    thick,
+    font=\footnotesize
+    ]
+    
+    % nodes
+    \node[draw,circle] (a1) {};
+    \node[draw,circle, below left=of a1] (a2) {};
+    \node[draw,circle, below right=of a1] (a3) {};
+    \node[draw,circle, below right=of a2] (a4) {$u$};
+    \node[draw,circle,rectangle,minimum size=0.4cm, below=of a4] (w1) {$1$};
+    
+    % edges
+    \draw[<-] (a1) --++(90:3cm) node[lbl,right,pos=.7] {$\nicefrac 12$};
+    \draw[e0] (a1) edge  node[,left,pos=.2] {} (a2);
+    \draw[e1] (a1) edge  node[,right,pos=.2] {} (a3);
+
+    \draw[e0= 25] (a2) edge  node[lbl] {$0$} (a4);
+    \draw[e1= 25] (a2) edge  node[] {} (a4);
+    \draw[e0= 25] (a3) edge  node[] {} (a4);
+    \draw[e1= 25] (a3) edge  node[lbl,below,pos=.7,right] {$-\sqrt 2$} (a4);
+    \draw[e0= 25] (a4) edge  node[] {} (w1);
+    \draw[e1= 25] (a4) edge  node[lbl] {$0$} (w1);
+    
+\node[left =.5cm of a1,yshift=.7cm] {d)};
+
+    
+    \node[draw,circle, left= 3.cm of a1] (a1) {};
+    \node[draw,circle, below = .55cm of a1, xshift=-.9cm] (a2) {};
+    \node[draw,circle, below = .55cm of a1, xshift= .9cm] (a3) {};
+    \node[draw,circle, below = .55cm of a2, xshift= .9cm] (a41) {$u$};
+    \node[leaf, below=of a41] (w1) {$1$};
+    
+    % edges
+    \draw[<-] (a1) --++(90:3cm) node[right,pos=.7] {};
+    \draw[e0 = 0] (a1) edge  node[] {} (a2);
+    \draw[e1 = 0] (a1) edge  node[] {} (a3);
+
+    \draw[e0= 30] (a2) edge  node[lbl,left,pos=.4] {$0$} (a41);
+    \draw[e1= 30] (a2) edge  node[lbl,right,pos=.2] {$\frac 12$} (a41);
+    \draw[e0= 30] (a3) edge  node[lbl,left,pos=.2] {$\frac 12$} (a41);
+    \draw[e1= 30] (a3) edge  node[lbl,right,pos=.4] {-$\frac 1{\sqrt2}$} (a41);
+    \draw[e0=25] (a41) edge  node[lbl] {$1$} (w1);
+    \draw[e1=25] (a41) edge  node[lbl] {$0$} (w1);
+    
+\node[left =.5cm of a1,yshift=.7cm] {c)};
+    
+    
+    \node[draw,circle, left= 2.7cm of a1] (a1) {};
+    \node[draw,circle, below = .55cm of a1, xshift=-.9cm] (a2) {};
+    \node[draw,circle, below = .55cm of a1, xshift= .9cm] (a3) {};
+    \node[draw,circle, below = .55cm of a2, xshift=-.3cm] (a41) {$v$};
+    \node[draw,circle, below = .55cm of a2, xshift= .3cm] (a42) {$w$};
+    \node[draw,circle, below = .55cm of a3, xshift=-.3cm] (a43) {$s$};
+    \node[draw,circle, below = .55cm of a3, xshift= .3cm] (a44) {$t$};
+    \node[leaf, below=of a42, xshift=.6cm] (w1) {$1$};
+    
+    % edges
+    \draw[<-] (a1) --++(90:3cm) node[right,pos=.7] {};
+    \draw[e0 = 0] (a1) edge  node[] {} (a2);
+    \draw[e1 = 0] (a1) edge  node[] {} (a3);
+
+    \draw[e0=  0] (a2) edge  node[] {} (a41);
+    \draw[e1=  0] (a2) edge  node[] {} (a42);
+    \draw[e0=  0] (a3) edge  node[] {} (a43);
+    \draw[e1=  0] (a3) edge  node[] {} (a44);
+    \draw[e0= 70] (a41) edge  node[lbl] {$0$} (w1);
+    \draw[e1=-25] (a41) edge  node[lbl] {$0$} (w1);
+    \draw[e0= 10] (a42) edge  node[lbl] {$\frac 12$} (w1);
+    \draw[e1= 20] (a42) edge  node[lbl,pos=.2] {$0$} (w1);
+    \draw[e0= 10] (a43) edge  node[lbl] {$\frac 12$} (w1);
+    \draw[e1= 20] (a43) edge  node[lbl] {$0$} (w1);
+    \draw[e0=-30] (a44) edge  node[lbl,pos=.3] {-$\frac 1{\sqrt2}$} (w1);
+    \draw[e1= 70] (a44) edge  node[lbl] {$0$} (w1);
+    
+\node[left =.5cm of a1,yshift=.7cm] {b)};
+
+
+%    \node[draw,circle, left= 2.5cm of a1] (a1) {};
+%    \node[draw,circle, below = .55cm of a1, xshift=-.9cm] (a2) {};
+%    \node[draw,circle, below = .55cm of a1, xshift= .9cm] (a3) {};
+%    \node[draw,circle, below = .55cm of a2, xshift=-.3cm] (a41) {};
+%    \node[draw,circle, below = .55cm of a2, xshift= .3cm] (a42) {};
+%    \node[draw,circle, below = .55cm of a3, xshift=-.3cm] (a43) {};
+%    \node[draw,circle, below = .55cm of a3, xshift= .3cm] (a44) {};
+%    \node[leaf, below=of a41, xshift=.5cm] (w1) {$0$};
+%    \node[leaf, right= .5cm of w1,inner sep=0pt] (w2) {$\frac 12$};
+%    \node[leaf, right= .5cm of w2,inner sep=0pt] (w3) {$-\frac 1{\sqrt 2}$};
+%    
+%    % edges
+%    \draw[<-] (a1) --++(90:3cm) node[right,pos=.7] {};
+%    \draw[e0 = 0] (a1) edge  node[] {} (a2);
+%    \draw[e1 = 0] (a1) edge  node[] {} (a3);
+%
+%    \draw[e0=  0] (a2) edge  node[] {} (a41);
+%    \draw[e1=  0] (a2) edge  node[] {} (a42);
+%    \draw[e0=  0] (a3) edge  node[] {} (a43);
+%    \draw[e1=  0] (a3) edge  node[] {} (a44);
+%    \draw[e0= 40] (a41) edge  node[] {} (w1);
+%    \draw[e1=-20] (a41) edge  node[] {} (w1);
+%    \draw[e0=  0] (a42) edge  node[] {} (w2);
+%    \draw[e1=-20] (a42) edge  node[] {} (w1);
+%    \draw[e0=  0] (a43) edge  node[] {} (w2);
+%    \draw[e1=-20] (a43) edge  node[] {} (w1);
+%    \draw[e0=  0] (a44) edge  node[] {} (w3);
+%    \draw[e1=  0] (a44) edge  node[] {} (w1);
+    
+    
+    \node[draw,circle, left= 3.5cm of a1] (a1) {};
+    \node[draw,circle, below = .55cm of a1, xshift=-.9cm] (a2) {};
+    \node[draw,circle, below = .55cm of a1, xshift= .9cm] (a3) {};
+    \node[draw,circle, below = .55cm of a2, xshift=-.3cm] (a41) {};
+    \node[draw,circle, below = .55cm of a2, xshift= .3cm] (a42) {};
+    \node[draw,circle, below = .55cm of a3, xshift=-.3cm] (a43) {};
+    \node[draw,circle, below = .55cm of a3, xshift= .3cm] (a44) {};
+    \node[leaf, below=of a41, xshift=-.5cm] (w1) {$0$};
+    \node[leaf, right= .02cm of w1,inner sep=0pt] (w2) {$0$};
+    \node[leaf, right= .02cm of w2,inner sep=0pt] (w3) {$\frac 12$};
+    \node[leaf, right= .02cm of w3,inner sep=0pt] (w4) {$0$};
+    \node[leaf, right= .02cm of w4,inner sep=0pt] (w5) {$\frac 12$};
+    \node[leaf, right= .02cm of w5,inner sep=0pt] (w6) {$0$};
+    \node[leaf, right= .02cm of w6,inner sep=0pt] (w7) {$-\frac 1{\sqrt 2}$};
+    \node[leaf, right= .02cm of w7,inner sep=0pt] (w8) {$0$};
+        
+    % edges
+    \draw[<-] (a1) --++(90:3cm) node[right,pos=.7] {};
+    \draw[e0 = 0] (a1) edge  node[] {} (a2);
+    \draw[e1 = 0] (a1) edge  node[] {} (a3);
+
+    \draw[e0=  0] (a2) edge  node[] {} (a41);
+    \draw[e1=  0] (a2) edge  node[] {} (a42);
+    \draw[e0=  0] (a3) edge  node[] {} (a43);
+    \draw[e1=  0] (a3) edge  node[] {} (a44);
+    \draw[e0=  0] (a41) edge  node[] {} (w1);
+    \draw[e1=  0] (a41) edge  node[] {} (w2);
+    \draw[e0=  0] (a42) edge  node[] {} (w3);
+    \draw[e1=  0] (a42) edge  node[] {} (w4);
+    \draw[e0=  0] (a43) edge  node[] {} (w5);
+    \draw[e1=  0] (a43) edge  node[] {} (w6);
+    \draw[e0=  0] (a44) edge  node[] {} (w7);
+    \draw[e1=  0] (a44) edge  node[] {} (w8);
+
+\node[left =.5cm of a1,yshift=.7cm] {a)};
+
+    \node[left=1.6cm of a1] (x) {$3$};
+    \node[above =-.1cm of x] (y) {\hspace{-.7cm}Level:};
+    \node[below=.55cm of  x] (x) {$2$};
+    \node[below=.52cm of  x] (x) {$1$};
+    
+    
+    
+%    \node[left = 4cm of a3.north] (vec) {
+%    \begin{minipage}{1.3cm}\footnotesize
+%%    \scalebox{.7}{
+%    $
+%\frac 12\cdot
+%    \begin{bmatrix*}[r]
+%    0, \\0, \\1, \\0, \\ 1, \\0, \\ -\frac 1{\sqrt 2},\\0\phantom{,}\\
+%    \end{bmatrix*}$
+%    \end{minipage}
+%};
+    
+
+    
+\end{tikzpicture}
+

@@ -1,0 +1,249 @@
+\begin{tikzpicture}[-{>[scale=0.5]},>=stealth',shorten >=1pt,auto,node distance=.6cm,
+    thick, state/.style={circle,draw,minimum size=14pt},font=\footnotesize]
+
+%\node (vec) {
+%    \begin{minipage}{1.3cm}\footnotesize
+%%    \scalebox{.7}{
+%    $
+%\frac 18\cdot
+%%    \begin{bmatrix*}[r]
+%%    1,\\1,\\i,\\i,\\ -1,\\1,\\-\omega,\\\omega,\\ -1,\\1,\\-i,\\i,\\ -1,\\-1,\\\omega,\\-\omega\phantom{,}\\
+%%    \end{bmatrix*}
+%%    \begin{bmatrix*}[r]
+%%        1,\\1,\\1,\\-1,\\ \omega,\\-\omega,\\i,\\i,\\ 1,\\-1,\\1,\\1,\\ -\omega,\\-\omega,\\-i,\\i,\\
+%%    \end{bmatrix*}
+%%    \begin{bmatrix*}[r]
+%%    1,\\1,\\i,\\i,\\ -\omega,\\\omega,\\i,\\-i,\\ -1,\\1,\\-i,\\i,\\-1,\\-1,\\ \omega,\\-\omega\\
+%%    \end{bmatrix*}
+%    \begin{bmatrix*}[r]
+%    1,\\1,\\i,\\i,\\ -\omega,\\\omega,\\i,\\i,\\ -1,\\1,\\-i,\\i,\\-\omega,\\-\omega,\\ i, \\-i\phantom{,}\\
+%    \end{bmatrix*}$
+%    \end{minipage}
+%};
+
+% ADD
+%\node[state, right = 3cm of vec.north, label=right:{$=r$}] (n1) {$x_1$};
+%
+%\node[state](n2)[below = of n1, xshift=-.9cm]{$x_2$};
+%\node[state](n3)[below = of n1, xshift= .9cm]{$x_2$};
+%
+%\node[state](n21)[below = of n2, xshift=-.5cm]{$x_3$};
+%\node[state](n22)[below = of n2, xshift= .5cm]{$x_3$};
+%
+%\node[state](n31)[below = of n3, xshift=-.5cm]{$x_3$};
+%\node[state](n32)[below = of n3, xshift= .5cm]{$x_3$};
+%
+%
+%\node[state](n211)[below = of n21, xshift=-.35cm]{$x_4$};
+%\node[state](n212)[right = .25cm of n211]{$x_4$};
+%\node[state](n221)[right = .25cm of n212]{$x_4$};
+%\node[state](n311)[right = .25cm of n221]{$x_4$};
+%\node[state](n321)[right = .25cm of n311]{$x_4$};
+%\node[state](n322)[right = .25cm of n321]{$x_4$};
+%
+%
+%\node[draw, rectangle,minimum size=.3cm,below = of n211] (l1) {$1$};
+%\node[draw, rectangle,minimum size=.3cm,right = of l1] (l2) {-$1$};
+%\node[draw, rectangle,minimum size=.3cm,right = of l2] (l3) {-$\omega$};
+%\node[draw, rectangle,minimum size=.3cm,right = of l3] (l4) {$\omega$};
+%\node[draw, rectangle,minimum size=.3cm,right = of l4] (l5) {$i$};
+%\node[draw, rectangle,minimum size=.3cm,right = of l5] (l6) {-$i$};
+%
+%
+%\path[]
+%(n1) edge[e0] node[right,pos=.5] {} (n3)
+%(n1) edge[e1] node[left,pos=.5] {} (n2)
+%(n2) edge[e0] node[left,pos=.5] {} (n21)
+%(n2) edge[e1] node[left,pos=.5] {} (n22)
+%(n3) edge[e0] node[left,pos=.5] {} (n31)
+%(n3) edge[e1] node[left,pos=.5] {} (n32)
+%
+%(n21) edge[e0] node[left,pos=.5] {} (n211)
+%(n21) edge[e1] node[left,pos=.5] {} (n212)
+%(n22) edge[e0] node[left,pos=.5] {} (n221)
+%(n22) edge[e1] node[left,pos=.5] {} (n221)
+%(n31) edge[e1]  node[left,pos=.5] {} (n311)
+%(n31) edge[e1]  node[left,pos=.5] {} (n321)
+%(n32) edge[e1]  node[left,pos=.5] {} (n321)
+%
+%
+%(n211) edge[e0=-20] node[pos=.5] {} (l1)
+%(n211) edge[e1= 20] node[pos=.5] {} (l1)
+%(n212) edge[e0=-0]  node[pos=.5] {} (l1)
+%(n211) edge[e1]     node[pos=.5] {} (l2)
+%(n221) edge[e1]     node[pos=.5] {} (l3)
+%(n221) edge[e0]     node[pos=.5] {} (l4)
+%(n311) edge[e1=-20] node[pos=.5] {} (l3)
+%(n311) edge[e0= 20] node[pos=.5] {} (l3)
+%(n321) edge[e1=-20] node[pos=.5] {} (l5)
+%(n321) edge[e0= 20] node[pos=.5] {} (l5)
+%(n322) edge[e1= -0] node[pos=.5] {} (l5)
+%(n322) edge[e0=  0] node[pos=.5] {} (l6);
+
+
+\node[state, %right = 2.7cm of vec.north, yshift=-1cm, label=right:{}
+] (n1) {};
+%\node[above= .7cm of n1] (ddd) {\phantom a};
+
+\node[state](n2)[below = of n1, xshift=-1.1cm]{$q_3$};
+\node[state](n3)[below = of n1, xshift= 1.1cm, inner sep = 0pt]{$q_3'$};
+
+\node[state](n21)[below = of n2, xshift=-.6cm, inner sep = 0pt]{$q_2$};
+\node[state](n22)[below = of n2, xshift= .6cm, inner sep = 0pt]{$p_2$};
+\node[state](n31)[below = of n3, xshift=-.6cm, inner sep = 0pt]{$q_2'$};
+\node[state](n32)[below = of n3, xshift= .6cm, inner sep = 0pt]{$p_2'$};
+
+\node[state](n41)[below = of n21, xshift= .6cm, inner sep = 0pt]{$q_1$};
+\node[state](n42)[below = of n31, xshift= .6cm, inner sep = 0pt]{$q_1'$};
+
+\node[draw, leaf,below = of n41, xshift=1.1cm] (e) {$1$};
+
+\draw[<-] (n1) --++(90:1cm) node[lbl,pos=.6] {$\frac 14$};
+
+\path[]
+(n1) edge[e0] node[left,pos=.5] {} (n2)
+(n1) edge[e1] node[lbl]			{-$1$} (n3)
+(n2) edge[e0] node[left,pos=.5] {} (n21)
+(n2) edge[e1] node[,lbl] 		{-$\omega$} (n22)
+(n3) edge[e0] node[left,pos=.5] {} (n31)
+(n3) edge[e1] node[lbl] {$\omega$} (n32)
+
+(n21) edge[e0=20] node[left,pos=.5] {}  (n41)
+(n21) edge[e1=20] node[lbl		  ] {$i$}  (n41)
+(n22) edge[e0=0] node[left] {}  (n42)
+(n22) edge[e1] node[lbl,right,yshift=.cm] {-$\omega$}  (n41)
+(n31) edge[e0=10] node[left,pos=.5] {} (n42)
+(n31) edge[e1=20] node[lbl,pos=.7	 ] {$i$} (n42)
+(n32) edge[e0=0] node[left,pos=.5] {} (n41)
+(n32) edge[e1=20] node[lbl       ] {-$\omega$} (n42)
+
+
+(n41) edge[e0=20] node[pos=.5] {} (e)
+(n41) edge[e1=20] node[pos=.5] {} (e)
+(n42) edge[e0=20] node[pos=.5] {} (e)
+(n42) edge[e1=20] node[lbl] {$-1$} (e);
+
+
+\node[left =.5cm of n1,yshift=.7cm] {a)};
+
+
+
+\node[state, right = 3.7cm of n1, label=right:{}] (n1) {};
+%\node[above= .7cm of n1] (ddd) {\phantom a};
+
+\node[state](n2)[below = of n1, xshift=-1.1cm]{$q_3$};
+\node[state](n3)[below = of n1, xshift= 1.1cm, inner sep = 0pt]{$q_3'$};
+
+\node[state](n21)[below = of n2, xshift=-.6cm, inner sep = 0pt]{$q_2$};
+\node[state](n22)[below = of n2, xshift= .6cm, inner sep = 0pt]{$p_2$};
+\node[state](n31)[below = of n3, xshift=-.6cm, inner sep = 0pt]{$q_2'$};
+\node[state](n32)[below = of n3, xshift= .6cm, inner sep = 0pt]{$p_2'$};
+
+\node[state](n4)[below = of n22, xshift= .6cm, inner sep = 0pt]{$\ell_1$};
+
+\node[draw, leaf,below = of n4] (e) {$1$};
+
+\draw[<-] (n1) --++(90:1cm) node[lbl,pos=.6] {$\frac 14$};
+
+\path[]
+(n1) edge[e0] node[left,pos=.5] {} (n2)
+(n1) edge[e1] node[lbl]			{$-1$} (n3)
+(n2) edge[e0] node[left,pos=.5] {} (n21)
+(n2) edge[e1] node[,lbl] 		{-$\omega$} (n22)
+(n3) edge[e0] node[left,pos=.5] {} (n31)
+(n3) edge[e1] node[lbl] {$\omega$} (n32)
+
+(n21) edge[e0= 60] node[left,pos=.5] {}  (n4)
+(n21) edge[e1=-30] node[lbl,pos=.1,below right] {$i$}  (n4)
+(n22) edge[e0= 40] node[lbl,left,pos=.2] {$Z$}  (n4)
+(n22) edge[e1= 0] node[lbl,pos=.6,xshift=-.3cm] {-$\omega$}  (n4)
+(n31) edge[e0=  0] node[left,pos=.2,lbl] {$Z$} (n4)
+(n31) edge[e1= 40] node[lbl,pos=.22,	 ] {$iZ$} (n4)
+(n32) edge[e0=-20] node[left,pos=.5] {} (n4)
+(n32) edge[e1= 60] node[lbl       ] {-$\omega Z$} (n4)
+
+(n4) edge[e0=20] node[pos=.5] {} (e)
+(n4) edge[e1=20] node[pos=.5] {} (e);
+
+\node[left =.5cm of n1,yshift=.7cm] {b)};
+
+
+
+
+\node[state, right = 3.1cm of n1, label=right:{}] (n1) {};
+%\node[above= .7cm of n1] (ddd) {\phantom a};
+
+\node[state](n2)[below = .3cm of n1, xshift=-1.1cm, inner sep = 0pt]{$q_3$};
+\node[state](n3)[below = .3cm of n1, xshift= 1.1cm, inner sep = 0pt]{$q_3'$};
+
+\node[state](n21)[below = .9cm of n2, inner sep = 0pt]{$\ell_2$};
+\node[state](n31)[below = .9cm of n3, inner sep = 0pt]{$\ell_2'$};
+
+\node[state](n4)[below = of n21, xshift= 1.1cm, inner sep = 0pt]{$\ell_1$};
+
+\node[draw, leaf,below = of n4] (e) {$1$};
+
+\draw[<-] (n1) --++(90:1cm) node[lbl,pos=.6] {$\frac 14$};
+
+\path[]
+(n1) edge[e0] node[left,pos=.5] {} (n2)
+(n1) edge[e1] node[lbl]			{$-1$} (n3)
+(n2) edge[e0] node[below,pos=.2,lbl] {$\id\otimes  \id$} (n21)
+(n2) edge[e1=10] node[pos=.0,yshift=-.2cm,lbl]	{-$\omega TZX\otimes \id$} (n31)
+(n3) edge[e0=-20] node[lbl,below,pos=.6] {$\id\otimes Z$} (n21)
+(n3) edge[e1] node[lbl,pos=.4,xshift=-.2cm] {$\omega T\otimes X$} (n31)
+
+(n21) edge[e0= 60] node[left,pos=.5] {}  (n4)
+(n21) edge[e1=-30] node[lbl,pos=.1,below right] {$i\cdot \id$}  (n4)
+(n31) edge[e0=  0] node[left,pos=.2] {} (n4)
+(n31) edge[e1= 40] node[lbl,pos=.3,	 ] {$Z$} (n4)
+
+(n4) edge[e0=20] node[pos=.5] {} (e)
+(n4) edge[e1=20] node[pos=.5] {} (e);
+
+
+\node[left =.5cm of n1,yshift=.7cm] {c)};
+
+
+
+
+
+
+
+\node[state, right = 2.5cm of n1, label=right:{}] (n1) {};
+
+\node[state](n2)[below = of n1]{$\ell_3$};
+
+\node[state](n21)[below = of n2, xshift=-.9cm, inner sep = 0pt]{$\ell_2$};
+\node[state](n22)[below = of n2, xshift= .9cm, inner sep = 0pt]{$\ell_2'$};
+
+\node[state](n41)[below = of n21, xshift= .9cm]{$\ell_1$};
+
+\node[draw, leaf,below = of n41] (e) {$1$};
+
+\draw[<-] (n1) --++(90:1cm) node[lbl,pos=.6,right] {$\frac 14 \cdot \id \otimes\id \otimes\id \otimes X$};
+
+\path[]
+(n1) edge[e0=50] node[    ] {} (n2)
+(n1) edge[e1=30] node[pos=.4767,lbl,xshift=-.4cm] {$Z\otimes \id \otimes Z$} (n2)
+(n2) edge[e0   ] node[    ] {} (n21)
+(n2) edge[e1   ] node[pos=.6,lbl,xshift=-.6cm] 		{$\omega \cdot T \otimes Z$} (n22)
+
+(n21) edge[e0=20] node[   ] {}  (n41)
+(n21) edge[e1=20] node[lbl,pos=.3] {$i\cdot \id$}  (n41)
+(n22) edge[e0=20] node[   ] {}  (n41)
+(n22) edge[e1=20] node[lbl] {$Z$}  (n41)
+
+(n41) edge[e0=30] node[pos=.5] {} (e)
+(n41) edge[e1=30] node[pos=.5] {} (e);
+
+\node[left =.5cm of n1,yshift=.7cm] {d)};
+
+
+    \node[right=1.9cm of n1,yshift=.5mm] (x) {$4$};
+    \node[left =-.cm of x,yshift=.5mm] (y) {\hspace{-.8cm}Level:};
+    \node[below=.8cm of  x] (x) {$3$};
+    \node[below=.8cm of  x] (x) {$2$};
+    \node[below=.8cm of  x] (x) {$1$};
+
+\end{tikzpicture}

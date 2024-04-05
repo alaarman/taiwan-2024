@@ -1,0 +1,139 @@
+\begin{tikzpicture}[-{>[scale=0.3]},>=stealth',shorten >=1pt,auto,node distance=.4cm,
+    thick, state/.style={circle,draw,minimum size=10pt,inner sep=.6pt},font=\scriptsize]
+
+\node (vec) {
+    \begin{minipage}{1.3cm}\footnotesize
+$\def\arraystretch{1.}
+    \begin{bmatrix*}[c]
+    \frac1{\sqrt 2} \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ \frac1{\sqrt 2}
+    \end{bmatrix*}
+    $
+    \end{minipage}
+};
+
+
+\node[state, right = 2cm of vec.north,anchor=north,yshift=-.2cm] (n1) {$x_3$};
+
+\node[state](n2)[below = of n1, xshift=-.9cm]{$x_2$};
+\node[state](n3)[below = of n1, xshift= .9cm]{$x_2$};
+
+\node[state](n21)[below = of n2, ]{$x_1$};
+\node[state](n22)[below = of n2, xshift= .9cm]{$x_1$};
+
+\node[state](n31)[below = of n3]{$x_1$};
+
+\node[draw, rectangle,minimum size=.5cm,below = of n21, xshift=.2cm,minimum size=10pt,inner sep=1pt] (l1) {$0$};
+\node[draw, rectangle,minimum size=.5cm,right = of l1,minimum size=10pt,inner sep=1pt] (l2) {$\nicefrac1{\sqrt 2}$};
+
+
+\path[]
+(n1) edge[e1] node[right,pos=.7] {} (n3)
+(n1) edge[e0] node[left,pos=.7] {} (n2)
+(n2) edge[e0] node[left,pos=.7] {} (n21)
+(n2) edge[e1] node[left,pos=.7] {} (n22)
+(n3) edge[e0] node[left,pos=.7] {} (n22)
+(n3) edge[e1] node[left,pos=.7] {} (n31)
+(n21) edge[e0=  0]  node[pos=.7] {} (l2)
+(n21) edge[e1=  0]  node[pos=.7] {} (l1)
+(n22) edge[e0= 20]  node[pos=.7] {} (l1)
+(n22) edge[e1= 20]  node[pos=.7] {} (l1)
+(n31) edge[e0=  0]  node[pos=.7] {} (l1)
+(n31) edge[e1=  0]  node[pos=.7] {} (l2)
+;
+
+\node[above=.5cm of n1,anchor=north]    (add) {\textbf{\add}};
+\node[left =1.3cm of add]    (svc) {\textbf{Vector}};
+
+
+\node[state, right=2cm of n1] (q1) {$x_3$} ;
+\node[state, below=of q1,xshift=-0.5cm] (q2) {$x_2$} ;
+\node[state, below=of q1,xshift=0.5cm] (q3) {$x_2$} ;
+\node[state, below=of q2] (q4) {$x_1$} ;
+\node[state, below=of q3] (q5) {$x_1$} ;
+\node[draw, rectangle,minimum size=.5cm,below = of q4,xshift=0.5cm,minimum size=10pt,inner sep=1pt] (l1) {$1$};
+
+
+\draw[e0] (q1) edge  node[] {} (q2);
+\draw[e1] (q1) edge  node[] {} (q3);
+\draw[e0=25] (q2) edge  node[] {} (q4);
+\draw[e1=25] (q2) edge  node[,pos=.45] {$0$} (q4);
+\draw[e0=25] (q3) edge  node[] {} (q5);
+\draw[e1=25] (q3) edge  node[,xshift=-0.6cm,pos=.45] {$0$} (q5);
+\draw[e0=-20] (q4) edge  node[] {} (l1);
+\draw[e1=-20] (q4) edge  node[,left=.1cm,pos=.45] {$0$} (l1);
+\draw[e0=-20] (q5) edge  node[] {} (l1);
+\draw[e1=-20] (q5) edge  node[,xshift=0.4cm,pos=.45] {$0$} (l1);
+\draw[<-] (q1) --++(90:.5cm) node[right=.2cm,pos=.7,] {$\nicefrac 1{\sqrt 2}$} node[right,pos=.8] {};
+
+\node[right =1.7cm of add]    (sldd) {\textbf{QMDD}};
+
+
+
+    \node[state, right = 1.8cm of q1] (a1) {$x_3$};
+    \node[state, below = of a1] (a3) {$x_2$};
+    \node[state, below = of a3] (a4) {$x_1$};
+    \node[draw,rectangle,minimum size=0.5cm, below= of a4,minimum size=10pt,inner sep=1pt] (w4) {1};
+
+
+    \draw[<-] (a1) --++(90:.5cm) node[right=.2cm,pos=.7,] {$\nicefrac 1{\sqrt 2} \cdot \id^{\otimes3}$} node[left,pos=.8] {};
+    \draw[e0=25] (a1) edge  node[] {} (a3);
+    \draw[e1=25] (a1) edge  node[pos=.3,right] {$X \otimes X$} (a3);
+    \draw[e0=25] (a1) edge  node[] {} (a3);
+    \draw[e1=25] (a3) edge  node[pos=.3,right] {$0$} (a4);
+    \draw[e0=25] (a3) edge  node[] {} (a4);
+    \draw[e0=25] (a4) edge  node[] {} (w4);
+    \draw[e1=25] (a4) edge  node[pos=.3,right] {0} (w4);
+
+\node[right=1.4cm of sldd]    (limdd) {\textbf{\limdd}};
+
+
+%\pause
+
+\node[state, xshift=-5cm, below=.7cm of l1,yshift=.cm] (h1) {$h_1$} ;
+\node[state, right=.65cm of h1] (h2) {$h_2$} ;
+\node[state, right=.65cm of h2] (h3) {$h_3$} ;
+\node[state, right=.65cm of h3] (h4) {$h_4$} ;
+\node[state, below=1.7cm of h1, xshift=0.5cm] (v1) {$v_1$} ;
+\node[state, right=.7cm of v1] (v2) {$v_2$} ;
+\node[state, right=.7cm of v2] (v3) {$v_3$} ;
+
+
+\draw[e1] (h1) edge  node[] {} (v1);
+\draw[e1=-10] (h1) edge  node[] {} (v2);
+\draw[e1=-10] (h1) edge  node[] {} (v3);
+\draw[e1=10] (h2) edge  node[] {} (v1);
+\draw[e1] (h2) edge  node[] {} (v2);
+\draw[e1=-10] (h2) edge  node[] {} (v3);
+\draw[e1=10] (h3) edge  node[] {} (v1);
+\draw[e1] (h3) edge  node[] {} (v2);
+\draw[e1=-10] (h3) edge  node[] {} (v3);
+\draw[e1=10] (h4) edge  node[] {} (v1);
+\draw[e1=10] (h4) edge  node[] {} (v2);
+\draw[e1] (h4) edge  node[] {} (v3);
+
+
+\node[draw,rectangle, below=0.2cm of h1, fill=white, opacity=1] (1) {$i\pi/3$};
+\node[draw,rectangle, below=0.2cm of h2, fill=white, opacity=1] (1) {$i\pi/3$};
+\node[draw,rectangle, below=0.2cm of h3, xshift=-0.2cm, fill=white, opacity=1] (1) {$-i\pi/3$};
+\node[draw,rectangle, below=0.2cm of h4, fill=white, opacity=1] (1) {$-i\pi/3$};
+
+
+\node[above=0.cm of h3,xshift=-0.6cm]    (a31) {{hidden layer}};
+\node[below=0.cm of v2,xshift=0.1cm]    (a31) {{visible layer}};
+
+\node[below=.2cm of l1,xshift=-3.3cm]    (rbm) {\textbf{RBM}};
+
+
+
+\node[right=.7cm of h4] (a30) {$A_3^0=\begin{bmatrix}1 & 0\end{bmatrix}$};
+\node[right=2cm of a30.west, anchor=west]   (a31) {$A_3^1=\begin{bmatrix}0 & 1\end{bmatrix}$};
+\node[below=1.cm of a30.west, anchor=west] (a20) {$A_2^0=\begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix}$};
+\node[below=1.cm of a31.west, anchor=west] (a21) {$A_2^1=\begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix}$};
+\node[below=1.cm of a20.west, anchor=west] (a10) {$A_1^0=\begin{bmatrix}\frac1{\sqrt 2} \\ 0\end{bmatrix}$};
+\node[below=1.cm of a21.west, anchor=west] (a11) {$A_1^1=\begin{bmatrix}0 \\ \frac1{\sqrt 2}\end{bmatrix}$};
+
+\node[right=3.8cm of rbm]    (a31) {\textbf{MPS}};
+
+
+
+\end{tikzpicture}

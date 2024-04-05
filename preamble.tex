@@ -1,0 +1,332 @@
+
+%\RequirePackage{color}
+%\RequirePackage[utf8]{inputenc}
+%\RequirePackage{graphicx}
+%\RequirePackage{epigraph}
+%\RequirePackage{amsmath}
+
+%\RequirePackage[ruled,vlined]{algorithm2e}
+\RequirePackage{algorithm}
+\RequirePackage[noend]{algpseudocode}
+
+\RequirePackage{amssymb}
+\RequirePackage{braket}
+%\RequirePackage{xfrac} %for sfrac
+\usepackage{eqparbox}
+
+%\let\proof\relax
+%\let\endproof\relax
+%\RequirePackage{amsthm}
+%\RequirePackage{thmtools}
+\RequirePackage{multirow}
+%\RequirePackage{comment}
+%\RequirePackage[T1]{fontenc}
+\RequirePackage{stmaryrd}
+%\RequirePackage{thm-restate}
+%\RequirePackage{complexity}
+%\RequirePackage[colorlinks,citecolor=blue!60!black!70,linkcolor=blue!60!black!70]{hyperref}%\RequirePackage{cite}
+%\RequirePackage{hyperref}
+%%\RequirePackage{caption}
+%%\RequirePackage{subcaption}
+%\RequirePackage{mathrsfs}
+%\RequirePackage[english]{babel}
+%%\RequirePackage{mathabx}
+%%\RequirePackage{pgfplots}
+\RequirePackage{calc}
+\RequirePackage{nicefrac}
+\RequirePackage{complexity}
+%\RequirePackage{fdsymbol}
+%\RequirePackage{eucal}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes,backgrounds,calc,arrows,automata}
+\usetikzlibrary{graphs,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+%\usetikzlibrary{shapes,backgrounds,calc,arrows}
+%\RequirePackage{verbatim}
+\RequirePackage{soul}
+%\RequirePackage{wrapfig}
+%\tikzstyle{every node} = [circle, draw,inner sep=3pt]
+\let\clipbox\relax
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol} 
+\usepackage{empheq}
+\usepackage{xspace}
+\usepackage{textpos}
+\usepackage{pifont} 
+\usepackage{eurosym} 
+
+\RequirePackage{venndiagram}
+
+\usepackage{comment}
+\usepackage{qcircuit}
+\usepackage{circuitikz}
+\usepackage{tabto}
+
+
+
+\newenvironment<>{varblock}[2][\textwidth]{
+    \begin{center}
+      \begin{minipage}{#1}
+        \setlength{\textwidth}{#1}
+          \begin{actionenv}#3
+            \def\insertblocktitle{#2}
+            \par
+%            \usebeamertemplate{block begin}
+            }
+  {\par
+%      \usebeamertemplate{block end}
+    \end{actionenv}
+  \end{minipage}
+\end{center}}
+
+%\usepackage{enumitem}
+
+
+%\newlist{todolist}{itemize}{2}
+%\setlist[todolist]{label=$\square$}
+%\usepackage{pifont}
+
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+
+\usepackage{etoolbox}
+
+\newcommand{\algruledefaultfactor}{.75}
+\newcommand{\algstrut}[1][\algruledefaultfactor]{\vrule width 0pt
+depth .25\baselineskip height #1\baselineskip\relax}
+\newcommand*{\algrule}[1][\algorithmicindent]{\hspace*{.5em}\vrule\algstrut
+\hspace*{\dimexpr#1-.5em}}
+
+\makeatletter
+\newcount\ALG@printindent@tempcnta
+\def\ALG@printindent{%
+    \ifnum \theALG@nested>0% is there anything to print
+    \ifx\ALG@text\ALG@x@notext% is this an end group without any text?
+    % do nothing
+    \else
+    \unskip
+    % draw a rule for each indent level
+    \ALG@printindent@tempcnta=1
+    \loop
+    \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
+    \advance \ALG@printindent@tempcnta 1
+    \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax% can't do <=, so add one to RHS and use < instead
+    \repeat
+    \fi
+    \fi
+}%
+
+\patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
+
+\AtBeginEnvironment{algorithmic}{\lineskip0pt}
+
+\newcommand\Stateh{\State \algstrut[1]}
+
+
+
+\interfootnotelinepenalty=10000
+
+\RequirePackage[bottom,symbol]{footmisc} 
+\RequirePackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+%\let\OldComment\Comment
+%\renewcommand\Comment[1]{\OldComment {\footnotesize #1}}
+\renewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ {\footnotesize #1}}
+
+
+\newlength\mytemplen
+\newsavebox\mytempbox
+
+\makeatletter
+\newcommand\mybluebox{%
+    \@ifnextchar[%]
+       {\@mybluebox}%
+       {\@mybluebox[0pt]}}
+
+\def\@mybluebox[#1]{%
+    \@ifnextchar[%]
+       {\@@mybluebox[#1]}%
+       {\@@mybluebox[#1][0pt]}}
+
+\def\@@mybluebox[#1][#2]#3{
+    \sbox\mytempbox{#3}%
+    \mytemplen\ht\mytempbox
+    \advance\mytemplen #1\relax
+    \ht\mytempbox\mytemplen
+    \mytemplen\dp\mytempbox
+    \advance\mytemplen #2\relax
+    \dp\mytempbox\mytemplen
+    \colorbox{myblue}{\hspace{1em}\usebox{\mytempbox}\hspace{1em}}}
+\makeatother
+
+
+\definecolor{shadecolor}{cmyk}{.05,.05,0.05,0.05}
+\definecolor{light-blue}{cmyk}{0.15,.15,.15,.15}
+\newsavebox{\mysaveboxM} % M for math
+\newsavebox{\mysaveboxT} % T for text
+
+\newcommand*\Garybox[2][Example]{%
+  \sbox{\mysaveboxM}{#2}%
+  \sbox{\mysaveboxT}{\fcolorbox{black}{light-blue}{#1}}%
+  \sbox{\mysaveboxM}{%
+    \parbox[b][\ht\mysaveboxM+.5\ht\mysaveboxT+.5\dp\mysaveboxT][b]{\wd\mysaveboxM}{#2}%
+  }%
+  \sbox{\mysaveboxM}{%
+    \fcolorbox{black}{shadecolor}{%
+      \makebox[19em]{\usebox{\mysaveboxM}}%
+    }%
+  }%
+  \usebox{\mysaveboxM}%
+  \makebox[0pt][r]{%
+    \makebox[\wd\mysaveboxM][c]{%
+      \raisebox{\ht\mysaveboxM-0.5\ht\mysaveboxT+0.5\dp\mysaveboxT-0.5\fboxrule}{\usebox{\mysaveboxT}}%
+    }%
+  }%
+}
+
+
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+
+%\RequirePackage{textgreek} % for \textchi
+
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+
+
+
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}
+%\declaretheorem[name=Theorem]{theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}{Corollary}[theorem]
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{conjecture}{Conjecture}
+%\declaretheorem[name=Conjecture]{conjecture}
+%\declaretheorem{definition}
+%\newtheorem{problem}{Problem}
+%\newtheorem{subproblem}{Problem}[problem]
+%\newtheorem{solution}{Solution}[problem]
+%\newtheorem{subsolution}{Solution}[subproblem]
+%\newtheorem{conjecturesolution}{Solution}[conjecture]
+%\newtheorem{conjecturecounterexample}{Counterexample}[conjecture]
+%\newtheorem{smalldefinition}{Definition}
+
+%\declaretheoremstyle[qed=$\diamond$]{definitionstyle}
+%\theoremstyle{definitionstyle}
+%\declaretheorem[style=definitionstyle]{definitions}
+%
+
+
+%%%% New commands for algorithmic package: Case statements
+\algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}{\algorithmicend\ \algorithmiccase}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+%
+
+
+
+
+\setlength{\parskip}{7pt}
+\setlength{\parindent}{0pt}
+
+
+% Below: added by Tim
+
+\usepackage{enumerate}
+\newcommand{\innerprod}[2]{\langle #1 | #2 \rangle}
+
+\newcommand{\unit}{1\!\!1}
+\def\X{X}
+\def\Y{Y}
+\def\Z{Z}
+\newenvironment{algo}[1][Algorithm]
+    {\begin{center} 
+    \begin{tabular}{|p{0.9\textwidth}|} 
+    \hline 
+    \vspace{0.1\baselineskip} 
+    \textbf{#1}\\} 
+    { 
+    \\\hline 
+    \end{tabular} 
+    \end{center} 
+    \vspace{\baselineskip} 
+    } 
+
+%\theoremstyle{df}
+%\declaretheorem{df}
+%\theoremstyle{thm}
+%\declaretheorem{thm}
+%\newtheorem{example}{Example}
+%\theoremstyle{prop}
+%\declaretheorem{prop}
+%\theoremstyle{corollary}
+%\declaretheorem{corollary}
+%\theoremstyle{conj}
+%\declaretheorem{conj}
+
+%\usepackage{physics}
+% package physics clashes with another package; now manually adding the
+% commands needed:
+%\newcommand{\expval}[1]{\langle #1 \rangle}
+%\newcommand{\dyad}[1]{| #1 \rangle \langle #1 |}
+%\newenvironment{smallmat}{\left[\begin{smallmatrix}}{\end{smallmatrix}\right]}
+%\newcommand{\Iso}{\ensuremath{\text{Iso}}}
+%\newcommand{\Stab}{\ensuremath{\text{Stab}}}
+%\newcommand{\Aut}{\ensuremath{\text{Aut}}}
+
+%\defaccr{\qmdd}{\textsf{QMDD}}
+%\defaccr{\add}{\textsf{ADD}}
+%\defaccr{\isoqmdd}{\textsf{LIMDD}}
+%\defaccr{\limdd}{\textsf{LIMDD}}
+%\defaccr{\qmdds}{\textsf{QMDD}s}
+%\defaccr{\adds}{\textsf{ADD}s}
+%\defaccr{\isoqmdds}{\textsf{LIMDD}s}
+%\defaccr{\limdds}{\textsf{LIMDD}s}
+%\defaccr{\glimdd}{\ensuremath{G}-\limdd}
+%\defaccr{\glimdds}{\ensuremath{G}-\limdds}
+
+\newcommand{\diagonal}[1]{\begin{smallmat}1 & 0 \\ 0 & #1\end{smallmat}}
+\newcommand{\antidiagonal}[1]{\begin{smallmat}0 & #1 \\ 1 & 0\end{smallmat}}
+
+%\newcommand{\tim}[1]{\textcolor{blue}{[\textbf{Tim: }#1]}}
+%\newcommand{\lieuwe}[1]{\textcolor{blue}{\textbf{Lieuwe: }#1}}
+
+%\renewcommand\index{\textsf{idx}}
+%\newcommand\iso{\textsf{iso}}
+
+
+
+
+% begin vertical rule patch for algorithmicx (http://tex.stackexchange.com/questions/144840/vertical-loop-block-lines-in-algorithmicx-with-noend-option)
+\makeatletter
+% start with some helper code
+% This is the vertical rule that is inserted
+\renewcommand*{\algrule}[1][\algorithmicindent]{\makebox[#1][l]{\hspace*{.5em}\vrule height .75\baselineskip depth .25\baselineskip}}%
+\makeatother
+
+
+
+%\newcommand[1]{\genset}{[#1]}
+\usepackage{caption}

@@ -1,0 +1,482 @@
+
+
+
+\usetikzlibrary{intersections,fit,shapes.misc, decorations.markings}
+
+\newcommand{\moresuccinct}{\leq_s}
+
+\newcommand\marktopleft[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.5ex,1.5ex) {};%
+}
+\newcommand\markbottomright[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (-.5ex,-0.1ex) {};%
+    \tikz[overlay,remember picture,inner sep=3pt]
+        \node[draw=none,fill=red!20,rectangle,fill opacity=.2,fit=(marker-#1-a.center) (marker-#1-b.center)] {};%
+}
+
+%\newenvironment{rcases}
+%  {\left.\begin{aligned}}
+%  {\end{aligned}\right\rbrace}
+
+\newcommand\marktopleftb[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.5ex,1.5ex) {};%
+}
+\newcommand\markbottomrightb[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (-.5ex,-0.1ex) {};%
+    \tikz[overlay,remember picture,inner sep=3pt]
+        \node[draw=none,fill=blue!20,rectangle,fill opacity=.2,fit=(marker-#1-a.center) (marker-#1-b.center)] {};%
+}
+
+\def\tikzmark#1{\tikz[remember picture,overlay]\node[inner ysep=0pt,anchor=base](#1){\strut};}
+
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{.2em}
+
+%\captionsetup[figure]{labelfont={bf,it},textfont={it}}
+
+%\setcounter{secnumdepth}{3}
+
+%\renewcommand\sectionautorefname{Sec.}
+%\renewcommand\subsectionautorefname{Sec.}
+%\renewcommand\subsubsectionautorefname{Sec.}
+%%\renewcommand\subsubsectionautorefname{\textsection}
+%%\newcommand\corollaryautorefname{Cor.}
+%\renewcommand\figureautorefname{Fig.}
+%\renewcommand\tableautorefname{Table}
+%%\renewcommand\exampleautorefname{Ex.}
+%\newcommand\algorithmautorefname{Alg.}
+%\renewcommand\appendixautorefname{App.}
+%%\renewcommand\definitionautorefname{Def.}
+%%\renewcommand\observationautorefname{Obs.}
+%\renewcommand\itemautorefname{Item}
+%%\renewcommand\lemmaautorefname{Lemma}
+%\renewcommand\theoremautorefname{Th.}
+%\renewcommand\equationautorefname{Eq.}
+%%\newcommand{\subfigureautorefname}{\figureautorefname}
+%\providecommand*\definitionautorefname{Def.}
+
+\makeatletter
+\patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
+\newcommand{\ALG@lineautorefname}{Line}
+\makeatother
+
+\newcommand\obj[1]{\textbf{Obj.~#1}}
+%\newcommand\problem[1]{\textbf{Problem~#1}}
+\newcommand\task[1]{\textbf{Task~#1}}
+
+
+\newcommand{\cbox}[2][yellow]{%
+  \colorbox{#1}{\parbox{\dimexpr\linewidth-2\fboxsep}{\strut #2\strut}}%
+}
+
+%\definecolor{emph}{rgb}{1,0.5,0}
+%\renewcommand\emph[1]{{\color{emph}#1}}
+
+\renewcommand\phi{\varphi}
+
+
+\newcommand\defaccr[2]{\newcommand#1{#2\xspace}}
+\newcommand\defmath[2]{\newcommand#1{\ensuremath{#2}\xspace}}
+\newcommand\concept[1]{\textit{#1}}
+
+\defmath\leqpoly{\leq_\poly}
+
+
+\defmath{\img}{\mathtt{image}}
+%\defmath{\pre}{\mathtt{preimage}}
+\defmath{\apre}{\mathtt{\forall preimage}}
+
+\defmath{\Post}{\mathit{Postfix}}
+
+\newcommand\ccode[1]{\texttt{#1}} 
+
+
+\newcommand{\overarrowi}[1]{\xrightarrow{#1}}
+\newcommand{\overarrow}[1]{
+  \mathchoice{\raisebox{-3pt}{ $\overarrowi{#1}$ }}
+             {\raisebox{-3pt}{ $\overarrowi{#1}$ }}
+             {\raisebox{-3pt}{ $\overarrowi{#1}$ }}
+             {\raisebox{-3pt}{ $\overarrowi{#1}$ }}}
+
+%containers
+\let\set\undefined
+
+\providecommand{\tuple}[1]{\ensuremath{\left( #1 \right)}}
+\providecommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
+\providecommand{\sequence}[1]{\ensuremath{\left( #1 \right)}}
+\providecommand{\sizeof}[1]{\ensuremath{\left\vert{#1}\right\vert}}
+\providecommand{\vect}[1]{\ensuremath{( \begin{matrix} #1 \end{matrix} )}}
+\providecommand{\always}[1]{\ensuremath{\left[ #1 \right]}}
+%\newcommand{\powerset}[1]{\wp({#1})}
+\newcommand{\powerset}[1]{\ensuremath{\mathbf{2}^{#1}}}
+% Semantics
+\newcommand{\eval}[1]{\ensuremath{\llbracket #1\rrbracket}}
+\newcommand{\qeval}[1]{\ensuremath{\ket{#1}}}
+
+
+\providecommand{\gen}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+
+
+\newcommand{\id}[1][]{\ensuremath{\mathbb{I}_{#1}}\xspace}
+\defmath{\bool}{\ensuremath{\mathbb{B}}}
+%\defmath{\nat}{\ensuremath{\mathbb{N}}}
+\defmath{\complex}{\ensuremath{\mathbb{C}}}
+\defmath{\real}{\ensuremath{\mathbb{R}}}
+\defmath{\integers}{\ensuremath{\mathbb{Z}}}
+\defmath{\conditionalind}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\defmath{\dx}{\partial x}
+\defmath{\ddx}{\sfrac{\partial}{\partial x}}
+\defmath{\half}{\textstyle{\frac{1}{2}}}
+
+\newcommand{\bracket}[1]{\left(#1\right)}
+\newcommand{\prob}[1]{P\left[#1\right]}
+\newcommand{\underbraceset}[2]{\underset{#1}{\underbrace{#2}}}
+\newcommand{\rfrac}[2]{\ ^{#1} \!/_{#2}}
+\newcommand{\atmost}[1]{\ensuremath{\mathcal{O}(#1)}}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+
+\defmath\Exists{\mathit{Exists}}
+\defmath\PlusExists{\mathit{PlusExists}}
+\defmath\var{\mathit{var}}
+\defmath\calciso{\mathsf{calciso}}
+
+
+
+% Abs, Floor, Ceil
+\providecommand{\abs}[1]{\lvert#1\rvert}
+%\providecommand{\floor}[1]{\lfloor#1\rfloor}
+%\providecommand{\ceil}[1]{\lceil#1\rceil}
+
+\newcommand{\defn}{\,\triangleq\,}
+
+% Rotate text
+\newcommand{\turner}[3][10em]{% \turn[<width>]{<angle>}{<stuff>}
+  \rlap{\rotatebox{#2}{\begin{varwidth}[t]{#1}#3\end{varwidth}}}%
+}
+
+
+
+
+\defmath\before{\prec}
+\defmath\beforeq{\preccurlyeq}
+
+
+\newcommand\amat[1]{\ensuremath{
+\begin{matrix*}[r]
+	#1
+\end{matrix*}}
+}
+
+\newcommand\mat[1]{\ensuremath{
+\begin{bmatrix*}[r]
+	#1
+\end{bmatrix*}}
+}
+\newcommand\smat[1]{\ensuremath{
+\left[\begin{smallmatrix}
+	#1
+\end{smallmatrix}\right]}
+}
+
+%\usepackage{physics}
+% package physics clashes with another package; now manually adding the
+% commands needed:
+\newcommand{\expval}[1]{\langle #1 \rangle}
+\newcommand{\dyad}[1]{| #1 \rangle \langle #1 |}
+\newenvironment{smallmat}{\left[\begin{smallmatrix}}{\end{smallmatrix}\right]}
+\newcommand{\Iso}{\ensuremath{\text{Iso}}}
+\newcommand{\Stab}{\ensuremath{\text{Stab}}}
+\newcommand{\Aut}{\ensuremath{\text{Stab}}}
+
+\newcommand\local[5]{\begin{smallmat}#5{#1} & #5{#2} \\ #5{#3} & #5{#4}\end{smallmat}\xspace}
+\newcommand\anti[1]{\begin{smallmat}0 & #1 \\ 1 & 0\end{smallmat}\xspace}
+\newcommand\diag[1]{\begin{smallmat}1 & 0 \\  0 & #1\end{smallmat}\xspace}
+
+\newcommand\diagg[2]{\begin{smallmat}#1 & 0 \\  0 & #2\end{smallmat}\xspace}
+
+
+\defaccr{\bdd}{\textsf{BDD}}
+\defaccr{\bdds}{\textsf{BDD}s}
+\defmath{\qmdd}{\textsf{SLDD}_{\times}}
+\defaccr{\add}{\textsf{ADD}}
+\defaccr{\isoqmdd}{\textsf{LIMDD}}
+\defaccr{\limdd}{\textsf{LIMDD}}
+\defaccr{\zlimdd}{\ensuremath{\braket{Z}}-\textsf{LIMDD}}
+\defaccr{\paulilimdd}{Pauli-\limdd}
+\defaccr{\paulilimdds}{Pauli-\limdds}
+\defaccr{\qmdds}{\textsf{QMDD}s}
+\defaccr{\adds}{\textsf{ADD}s}
+\defaccr{\isoqmdds}{\textsf{LIMDD}s}
+\defaccr{\limdds}{\textsf{LIMDD}s}
+\defaccr{\glimdd}{\ensuremath{G}-\limdd}
+\defaccr{\glimdds}{\ensuremath{G}-\limdds}
+
+\newcommand{\tim}[1]{\textcolor{blue}{[\textbf{Tim: }#1]}}
+\newcommand{\lieuwe}[1]{\textcolor{blue}{\textbf{Lieuwe: }#1}}
+\newcommand{\codecomment}[1]{{\small \textcolor{blue}{$\triangleright$ #1}}}
+
+\renewcommand\index{\textsf{idx}\xspace}
+%\newcommand\iso{\textsf{iso}}
+\newcommand\leaf{\textsf{Leaf}\xspace}
+\newcommand\lbl{\textsf{label}\xspace}
+\newcommand\highlabel{\textsf{HighLabel}\xspace}
+\newcommand\rootlabel{\textsf{RootLabel}\xspace}
+\newcommand\unique{\textsc{Unique}\xspace}
+\newcommand\cache{\textsc{Cache}\xspace}
+\newcommand\autocache{\textsc{StabCache}\xspace}
+\newcommand\isocache{\textsc{IsoCache}\xspace}
+\newcommand\Edge{\textsc{Edge}\xspace}
+\newcommand\Node{\textsc{Node}\xspace}
+\newcommand\Pauli{\textsc{Pauli}\xspace}
+\newcommand\pauli{\Pauli}
+\newcommand\makeedge{\textsc{MakeEdge}\xspace}
+\newcommand{\rootedge}{\textsc{RootEdge}\xspace}
+%\newcommand{\gmax}{\text{gmax}} % todo Please define the \gmax command -LV
+
+\defmath\oh{\mathcal O}
+
+\defmath\rootlim{B_{\textnormal{root}}}
+\defmath\lowlim{B_{\textnormal{low}}}
+\defmath\highlim{B_{\textnormal{high}}}
+%\defmath\gmax{\textnormal{gmax}}
+%\def\gmax{g^{\textnormal{max}}}
+\defmath\gmax{g}
+\defmath\kmax{\kappa^{\textnormal{final}}}
+
+\newcommand{\alfons}[1]{{\sethlcolor{yellow} \hl{#1}}}
+%\newcommand\alfons[1]{\colorbox{blue!30}{#1}}
+
+\defmath\cast{\mathbb C^\ast}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+%\defmath\bool{\mathcal B}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\follow[2]{\ensuremath{\textsc{follow}_{#1}(#2)}}
+%\defmath\plus{\,\,\raisebox{-.1mm}{\rotatebox{0}{$+\hspace{-1.5mm}\triangleright$}}\,\,}
+%\defmath\plus{\,\,\raisebox{-.1mm}{\rotatebox{0}{$+\hspace{-.5mm}\rangle$}}\,\,}
+%\defmath\plus{\,\,\raisebox{-.4mm}{\rotatebox{90}{$\pm$}}\,\,}
+\defmath\plus{+}
+%\newcommand\ledge[2]{\ensuremath{#1.#2}}
+
+
+\newlength{\pgfcalcparm}
+\newlength{\pgfcalcparmm}
+
+
+\DeclareRobustCommand{\leafnode}[1][]{%
+%  \pgftext{\settowidth{\global\pgfcalcparm}{\scriptsize $\,\,#2\,\,$}}%
+  \raisebox{-.8mm}{%
+  \tikz{%
+    \node[state,inner sep=0pt,minimum size=10pt,right= of x,leaf](v){\scriptsize $1$};%
+  }%
+  }%
+}
+
+
+\DeclareRobustCommand{\leafedge}[2][]{%
+%  \pgftext{\settowidth{\global\pgfcalcparm}{\scriptsize $\,\,#2\,\,$}}%
+  \raisebox{-.8mm}{%
+  \tikz{%
+    \node[inner sep=0pt] (x){$#1\,\,$};%
+    \node[state,inner sep=0pt,minimum size=10pt,right= of x,leaf](v){\scriptsize $1$};%
+    \draw (x) to node[above,pos=.5]{\scriptsize $\,#2\,\,$} (v);%
+  }%
+  }%
+}
+
+
+\DeclareRobustCommand{\ledge}[3][]{%
+%  \pgftext{\settowidth{\global\pgfcalcparm}{\scriptsize $\,\,#2\,\,$}}%
+  \raisebox{-.8mm}{%
+  \tikz{%
+    \node[inner sep=0pt] (x){$#1\,\,$};%
+    \node[state,inner sep=0pt,minimum size=10pt,right= of x](v){\scriptsize $#3$};%
+    \draw (x) to node[above,pos=.5]{\scriptsize $\,#2\,\,$} (v);%
+  }%
+  }%
+}
+
+\DeclareRobustCommand{\lnode}[5][]{%
+%    \pgftext{\settowidth{\global\pgfcalcparm}{\scriptsize $\,\,#2\,\,$}}%
+%    \pgftext{\settowidth{\global\pgfcalcparmm}{\scriptsize $\,\,#4\,\,$}}%
+  \raisebox{-1.5mm}{%
+  \tikz{%
+    \node[state,inner sep=0pt,minimum size=10pt] (v){\scriptsize $#1$};%
+    \node[state,inner sep=0pt,minimum size=10pt,left= of v](v0){\scriptsize $#3$};%
+    \draw[dotted] (v) to node[above,pos=.45]{\scriptsize $#2$} (v0);%
+    \node[state,inner sep=0pt,minimum size=10pt,right= of v](v1){\scriptsize $#5$};%
+    \draw (v) to node[above,pos=.45]{\scriptsize $#4$} (v1);%
+  }%
+  }%
+}
+%\renewcommand\lnode[5][]{\ensuremath{\ledge{#2}{#3} \plus \ledge{#4}{#5}}}
+
+
+\newcommand\low[1]{\ensuremath{#1[0]}}
+\newcommand\high[1]{\ensuremath{#1[1]}}
+\defmath\Low{\ensuremath{\textsf{low}}}
+\defmath\High{\ensuremath{\textsf{high}}}
+\defmath\LIM{\textsf{LIM}}
+
+\def\findisomorphism{\textsf{FindIsomorphism}\xspace}
+\def\getautomorphisms{{\tt GetStabilizerGenSet}\xspace}
+\def\isomorphismset{{\tt IsomorphismSet}\xspace}
+\def\getsingleisomorphism{\textnormal{{\tt GetIsomorphism}}\xspace}
+\def\findautomorphismsetintersection{{\tt IntersectAutomorphismGenSets}\xspace}
+\def\findisomorphisminintersection{{\tt FindIsomorphismInIntersection}\xspace}
+\def\findisomorphismsetintersection{{\tt IntersectIsomorphismSets}\xspace}
+
+\def\findpauliisomorphism{{\sc FindSingleIsomorphism}}
+\def\getpauliautomorphismgenerators{{\sc get-pauli-automorphism-generators}}
+\def\automorphismgenerators{{\tt AutomorphismGenSet}}
+\def\none{{\tt None}}
+\def\horizontalline{\noindent\rule{\textwidth}{1pt} }
+\def\findelementincosetintersection{\textsc{FindElementInCosetIntersection}}
+\def\findsolutiontoisomorphismequations{\textsc{FindSolutionToIsomorphismEquations}}
+\def\psim{\simeq_{\text{Pauli}}}
+
+
+\tikzstyle{oval} = [state, ellipse, minimum size=4mm, inner sep=0.5mm, node distance=1cm]
+%\tikzset{every picture/.style={->,thick}}
+
+
+
+%\tikzstyle{oval} = [state, ellipse, minimum size=4mm, inner sep=0.5mm, node distance=1cm]
+%\tikzset{every picture/.style={->,thick}}
+
+
+% For BDDs:
+\tikzstyle{leaf}=[draw, rectangle,minimum size=4.mm, inner sep=3pt]
+\tikzstyle{var}=[circle,draw=black!70,solid,thick,minimum size=6mm]
+\tikzstyle{bdd}=[regular polygon, regular polygon sides=3, draw=black!70,solid,thick,inner sep=0.5mm]
+\tikzstyle{n}=[->,loosely dashed,thick]
+\tikzstyle{p}=[->,solid,thick]
+\tikzstyle{b}=[->,densely dashdotted,ultra thick]
+\tikzset{every node/.style={initial text={}, inner sep=2pt, outer sep=0}}
+\tikzstyle{e0}[0]=[dashed,thick,bend right=#1]
+\tikzstyle{e1}[0]=[solid, bend left =#1]
+
+\tikzstyle{lbl}=[draw,fill=white,inner sep=2pt, minimum size=0cm,line width=.5pt]
+
+
+
+
+
+\defmath\yy{\begin{smallmat}
+    0 & y^*\\
+    y & 0\\
+\end{smallmat}}
+
+\defmath\ww{\begin{smallmat}
+      0 & y   \\
+      y^* & 0  \\
+  \end{smallmat}
+}
+
+
+\def\paulilim{\textnormal{\sc PauliLIM}}
+\tikzstyle{e0}[0]=[dotted,bend right=#1]
+\tikzstyle{e1}[0]=[solid, bend left =#1]
+\defmath\hv{{\hat v}}
+\tikzset{every node/.style={initial text={}, inner sep=2pt, outer sep=0}}
+
+\defmath\expsep{\succ\hspace{-1.5mm}\succ}
+
+\newcommand{\allformulae}[2]{#1^{#2}}
+
+\defmath{\sumstate}{\ket{\text{Sum}}}
+\defmath{\atleastassuccinctas}{\preceq_s}%{\preceq_s}
+\defmath{\strictlymoresuccinctthan}{\prec_s}
+%\defmath{\stronglyatleastassuccinctas}{\leq_{ss}}
+\defmath{\notmoresuccinctthan}{\npreceq_{s}}
+
+
+\def\bigarrowhead{-{Latex[length=2mm,width=2mm]}}
+\def\bigarrowheadb{{Latex[length=2mm,width=2mm]}-{Latex[length=2mm,width=2mm]}}
+
+\newcommand\hide[1]{}
+
+\newcommand\supp[1]{} %to make supplementary material disappear
+
+
+
+%    \newcommand{\rbmToMpsLabel}{to node[left,pos=.45,fill=white,draw,solid] {rbmtomps}}
+
+
+\def\crossedto{\hspace{3mm}\mathclap{\longrightarrow}{\hspace{-1.5mm}\times}\hspace{2mm}}
+
+\def\strictsuccinctto{
+    \setbox0\hbox{
+    %\ontop{
+            $\longrightarrow$
+%    }
+    }\copy0\llap{\raise\ht0\hbox{
+    {
+    $    \hspace{0mm}\mathclap{\longleftarrow}{\hspace{-1.5mm}\times}\hspace{0mm}$
+    }
+    }}
+}
+\def\questionto{\stackrel{\scriptsize \raisebox{-1mm}?}{\to}}
+%
+
+\newcommand{\nindex}{\ensuremath{\textsf{idx}}}
+
+
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand\rot[1]{\multicolumn{1}{R{90}{0em}|}{#1}}
+
+
+
+%    ****    USE THESE SYMBOLS IN THE TABLE
+\newcommand{\Yes}{\ding{51}\xspace}
+\newcommand{\Yar}{\ding{51}'\xspace}
+\newcommand{\No}{\ding{54}\xspace}
+\newcommand{\Cond}{\ensuremath{\circ}\xspace}
+\defmath\samp{\textbf{Sample}}
+\defmath\pro{\textbf{Measure}}
+\defmath\gates{\textbf{Gates}}
+\defmath\eq{\textbf{Equal}}
+\defmath\res{\textbf{Res}}
+\defmath\addi{\textbf{Addition}}
+\defmath\inprod{\textbf{InnerProd}}
+\defmath\fid{\textbf{Fidelity}}
+\defmath\had{\textbf{Hadamard}}
+\defmath\xyz{\textbf{X,Y,Z}}
+\defmath\cx{\textbf{CX}}
+\defmath\cz{\textbf{CZ}}
+\defmath\swap{\textbf{Swap}}
+\defmath\loc{\textbf{Local}}
+\defmath\T{\textbf{T}}
+
+
+\defmath\Rot{\mathit{Rot}}
+
+
+\newcommand{\crule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
