@@ -11,6 +11,12 @@
 
 \RequirePackage{amssymb}
 \RequirePackage{braket}
+%\RequirePackage{physics}
+%\undef\eval
+%\undef\real
+%\undef\expval
+%\undef\dyad
+%\undef\var
 %\RequirePackage{xfrac} %for sfrac
 \usepackage{eqparbox}
 
@@ -66,6 +72,18 @@
 \usepackage{circuitikz}
 \usepackage{tabto}
 
+\newenvironment{refframe}[1]
+    {
+	\begin{refsection}
+	\begin{frame}{#1}
+    }
+    {
+	\vfill
+	\printbibliography[section=\therefsection]
+	\end{frame}
+	\end{refsection}
+    }
+
 
 
 \newenvironment<>{varblock}[2][\textwidth]{
@@ -99,6 +117,25 @@
 
 
 \usepackage{etoolbox}
+
+
+
+%\newcommand{\crule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+%\usepackage[most]{tcolorbox}
+%\usepackage{varwidth}
+%\usepackage{capt-of}
+%\usepackage[]{adjustbox}
+%\tcbset{enhanced,colback=cyan!5!white,colframe=cyan!75!black,fonttitle=\bfseries}
+%
+%
+%\newcommand\keymessage[1]{
+%\begin{tcolorbox}
+%\textbf{Key message}: #1
+%\end{tcolorbox}
+%}
+
+
+
 
 \newcommand{\algruledefaultfactor}{.75}
 \newcommand{\algstrut}[1][\algruledefaultfactor]{\vrule width 0pt

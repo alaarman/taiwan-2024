@@ -7,7 +7,7 @@
 \vfill
 	
 	\centering
-	\textbf{\Large Stabilizer Formalism, Decision Diagrams and \limdd~\cite{vinkhuijzen2021limdd}}
+	\textbf{\Large Stabilizer Formalism, Decision Diagrams and \limdd~\cite{limdd}}
 	
 	
 \vfill
@@ -20,18 +20,18 @@
 
 
 
-\begin{frame}{Quantum State Representation with the
+\begin{refframe}{Quantum State Representation with the
 					\alert{Stabilizer Formalism}}
 
 
-\begin{definition}
-Stabilizer States are:
+\begin{definition}[Stabilizer States~\cite{aaronson2008improved}]
 
 \begin{itemize} 
 	\item
-A non-universal subset of all quantum states crucial for error correction, etc: 
+A non-universal subset of all quantum states \alert{crucial for error correction, etc}: 
 
 \begin{center}
+\scalebox{.7}{
 \begin{tikzpicture}\footnotesize
   \tikzset{venn circle/.style={circle,minimum width=2cm,fill=####1,opacity=0.4}}
   \node [venn circle=white,minimum width=2.5cm,draw] (A) at (0,0.3) {};
@@ -52,13 +52,14 @@ A non-universal subset of all quantum states crucial for error correction, etc:
 %  \node [venn circle = Blue!100!white,text width=1cm,align=center, minimum width=1.cm] (B) at (-.5,.3) 	{\textcolor{white}{QMDD}};						
 
   \node [venn circle = OliveGreen,text width=1cm,align=center, minimum width=1.cm,opacity=.5,text opacity=1] (C) at (.5,.2) {\textcolor{white}{Stabilizer states}};
-\end{tikzpicture}					
+\end{tikzpicture}
+}		
 \end{center}
 
 \pause
 
-\item A stabilizer state $\ket{\phi}$ is uniquely defined by 
-			$n$-qubit Pauli operators ($n \times$):
+\item A stabilizer state $\ket{\phi}$ is uniquely defined by   
+			$n$-qubit Pauli strings ($n \times$):
 \[
 \left\{
 \begin{matrix}
@@ -72,21 +73,21 @@ A non-universal subset of all quantum states crucial for error correction, etc:
 \]	
 \pause
 
-with $P_{i,1} \otimes  P_{i,2} \otimes  \dots  \otimes P_{i,n} \cdot \ket{\phi} = \ket{\phi}$ (state $\ket{\phi}$ is stabilized by each Pauli op.)
+with $\pm P_{i,1} \otimes  P_{i,2} \otimes  \dots  \otimes P_{i,n} \cdot \ket{\phi} = \ket{\phi}$ (state $\ket{\phi}$ is stabilized by each Pauli op.)
 
 \pause
 
-\item Closed under the stabilizer (or Clifford) gate set: \set{S, H, CNOT}
+\item Closed under the stabilizer (or Clifford) gate set: \set{S, H, CX}
 
 \item Efficiently classically simulatable!
-\pause
-\item \alert{Used in error correction, quantum networking, etc etc.}
+%\pause
+%\item \alert{Used in error correction, quantum networking, etc etc.}
 \end{itemize}
 \end{definition}
 
 
 
-\end{frame}
+\end{refframe}
 
 
 
@@ -106,8 +107,8 @@ Pauli gates:~~~~ $I = \mat{1&0\\0&1},~~~~X = \mat{0&1\\1&0} ~~~~Y = \mat{0&-i\\i
 \item $-Z \cdot \ket{1} = \mat{-1&0\\0&1} \cdot \mat{0\\1} = \mat{0\\1} = \ket 1$
 \pause
 \item
-\only<+>{ ~~$P \cdot \ket{+} = ~~P \cdot \mat{1\\1} = \mat{1\\1} = \ket +$ for which $P \in \set{\mathbb{I}, X, Y, Z}$?}
-\pause
+%\only<+>{ ~~$P \cdot \ket{+} = ~~P \cdot \mat{1\\1} = \mat{1\\1} = \ket +$ for which $P \in \set{\mathbb{I}, X, Y, Z}$?}
+%\pause
  ~~$X \cdot \ket{+} = ~~X \cdot \mat{1\\1} = \mat{1\\1} = \ket +$, etc
 %\pause
 %\item
@@ -183,17 +184,17 @@ $
 \vspace{-.5em}
 \pause
 
-\begin{alertblock}{Caveats}
-	
-\vspace{-.5em}
-\begin{itemize}
-\item The stabilizer formalism is non-universal, \hfill but  important and tractable
-\item The stabilizer tableau uniquely defines a state, \hfill but many tableaux do as well
-%\item Classical simulation is tractable, \hfill but non-universal (as expected)\\
-\end{itemize}
-\vspace{-.5em}
-
-\end{alertblock}
+%\begin{alertblock}{Caveats}
+%	
+%\vspace{-.5em}
+%\begin{itemize}
+%\item The stabilizer formalism is non-universal, \hfill but  important and tractable
+%\item The stabilizer tableau uniquely defines a state, \hfill but many tableaux do as well
+%%\item Classical simulation is tractable, \hfill but non-universal (as expected)\\
+%\end{itemize}
+%\vspace{-.5em}
+%
+%\end{alertblock}
 
 
 				
@@ -498,7 +499,7 @@ $\ket{\phi} = \ket 0 \otimes \hspace{-1em} \underbrace{\ket{\phi_0}}_{\text{$n-1
 \node[below= .3cm of dt, xshift=-2cm] {\alert{\textbf{Merge nodes $v, w$: }}};
 \node[below= .3cm of dt] {\alert{~~~~Never}};
 \node[below= .3cm of add] {\alert{$\ket v = \ket w$ }};
-\node[below= .3cm of aadd, xshift=.cm,text width = 4cm,align=center] {\alert{$\ket v = \gamma \cdot \ket w$\\ \vspace{3mm}(equivalent up to a complex factor $\lambda$)}};
+\node[below= .3cm of aadd, xshift=.cm,text width = 4cm,align=center] {\alert{$\ket v = \gamma \cdot \ket w$\\ \vspace{3mm}(equivalent up to a complex factor $\gamma$)}};
 
     \onslide<1->
 \end{tikzpicture}
@@ -521,17 +522,17 @@ $\ket{\phi} = \ket 0 \otimes \hspace{-1em} \underbrace{\ket{\phi_0}}_{\text{$n-1
 \begin{itemize}
 	\item Succinct representation of many quantum states: 
 		\alert{\#nodes $\ll 2^n$}\\
-		(Empirical results show circuit simulation up to 70 qubits.)
+		(based on empirical results)
 	\item<2-> ``Homomorphic compression scheme'' for combinatorial data
 	\item<5-> Operations often linear-time in the size of the DD: 
 %	(\alert{number of nodes $m$}):
 	\\
-		\centering
-		\vspace{2mm}
-\phantom{ZZZZZZZZZZ}		\scalebox{1.2}{
+\vspace{4mm}
+\centering
+\scalebox{1.2}{\phantom{ZZZZZZZZZ}	
 $
  \ket{\underbrace{\phi_{i+1}}_{
-\oh(\alert m)}} ~~=~~ \underbrace{U_1}_{\oh(1)} ~~\cdot~~ \ket{\underbrace{{\phi_i}}_{\hspace{5mm}\alert m ~\ll~ 2^n\hspace{-2mm}}}
+\oh(\alert m)}} ~~=~~ {U ~~\cdot~~ \ket{\underbrace{{\phi_i}}_{\mathclap{\alert m \text{ nodes}}}}}
 $
 }
 \end{itemize}
@@ -695,8 +696,8 @@ X \otimes I \cdot
 
 
 \begin{theorem}%[\cite{vinkhuijzen2021limdd} ]
-QMDD requires $2^\Omega({\sqrt{n}})$ space to represent 
-	$\sqrt n\times \sqrt n$ grid graph states.
+QMDD requires $2^{\Omega({n})}$ space to represent 
+	$n\times n$ grid graph states.
 \end{theorem}
 
 
@@ -737,7 +738,7 @@ QMDD requires $2^\Omega({\sqrt{n}})$ space to represent
                 			  
     \node (b) at (3.6,.0) {};
     \node[above = 3cm of b] (t) {};
-    \draw (b) edge[<->,ultra thick] node[right] {\Large $\sqrt n$} (t);
+    \draw (b) edge[<->,ultra thick] node[right] {\Large $n$} (t);
     
     \onslide<4->{	  
     \node (b) at (1.5,-1) {};
@@ -797,7 +798,7 @@ QMDD requires $2^\Omega({\sqrt{n}})$ space to represent
 
     \node[right = .2cm of w8,yshift=-.4cm] (b) {};
     \node[above = 2.1cm of b] (t) {};
-    \draw (b) edge[<->] node[right] {$\nicefrac 12 n$} (t);
+    \draw (b) edge[<->] node[right] {$\nicefrac 12 n^2$} (t);
 
     % edges
     \draw[<-] (a1) --++(90:1.4cm) node[right,pos=.7] {};
@@ -815,13 +816,13 @@ QMDD requires $2^\Omega({\sqrt{n}})$ space to represent
         mirror,
         raise=0.1cm
     },
-    decorate] (w1.south west) -- node[yshift=-.4cm] {\alert{unique sub-functions $f_{\vec c}$ for $\vec c\in \set{0,1}^{\nicefrac 12 n}$}} (w8.south east);
+    decorate] (w1.south west) -- node[yshift=-.4cm] {\alert{unique sub-functions $f_{\vec c}$ for $\vec c\in \set{0,1}^{\nicefrac 12 n^2}$}} (w8.south east);
 \end{tikzpicture}
 
 \vspace{-2.5cm}
 
 \begin{theorem}[\cite{lipton1979generalized}]
-	A balanced bisection of the nodes of an $\sqrt n\times \sqrt n$ grid graph has $\Omega(\sqrt n)$ cross edges.
+	A balanced bisection of the nodes of an $n\times  n$ grid graph has $\Omega(n)$ cross edges.
 \end{theorem}
 
 
@@ -1167,7 +1168,7 @@ for \mbox{$P \in \set{\id, X, Y ,Z}^{\otimes n}$}
 \alert{We do pay a (cubic) price for succinctness:}
 
 \begin{theorem}%[\limdd~\cite{vinkhuijzen2021limdd}]
-Applying gates, measurements for \limdd is a factor $O(n^3)$ slower than~for~QMDD.
+Applying gates and measurements for \limdd is at most a factor $O(n^3)$ slower than~for~QMDD.
 \end{theorem}
 
 \begin{corollary}
@@ -1323,7 +1324,7 @@ Any circuit which deterministically produces the$\ket{W_n}$ state requires $\Om
 
 \begin{exampleblock}{Circuit equivalence check implementation}
 \begin{itemize}
-	\item 	\limdd implemented in DDSIM~\cite{limdd2}.
+	\item 	\limdd implemented in DDSIM~\cite{vinkhuijzen2023efficient}.
 	\item 	Tested on QFT, after random Clifford  circuit
 \end{itemize}
 \end{exampleblock}
@@ -1348,38 +1349,5 @@ Any circuit which deterministically produces the$\ket{W_n}$ state requires $\Om
 
 
 
-\begin{refsection}
-\begin{frame}{Other Variants of Algebraic Decision Diagrams}
-
-
-
-\vspace{-.8em}
-
-	
-\begin{table}
-\centering\footnotesize
-\def\arraystretch{1.1}
-\begin{tabular}{|p{5.5cm}|c|c|}
-\hline
-\textbf{(Quantum) decision diagrams}				& \textbf{Node merging strategy} &  \\\hline
-Decision Tree	& (no merging) &  \\
-\add~\cite{bahar1997algebric}, MTBDD~\cite{clarke1993spectral}, QuiDD~\cite{viamontes2003improving}			& $f = g$  &  \\
-SLDD$_\times$~\cite{wilson2005decision,fargier2013semiring}, QMDD~\cite{miller2006qmdd}, TDD~\cite{hong2020tensor}	& $f = \gamma\cdot g$   & $\gamma \in \complex, \mathbb R, \dots$  \\
-SLDD$_+$~\cite{fargier2013semiring}, EVBDD~\cite{lai1994evbdd}	& $f = g + \alpha$ & $\alpha \in \complex, \mathbb R, \dots$  \\
-AADD~\cite{sanner2005AffineADDs}, FEVBDD~\cite{tafertshofer1997factored} 		& $f = \gamma\cdot g + \alpha$ & $\alpha,\gamma \in \complex, \mathbb R, \dots$ \\
-\limdd~\cite{vinkhuijzen2021limdd}			& $f = \gamma  P_1\otimes \dots \otimes P_n \cdot g$ & $P_i \in \gen{\id, X,Y,Z}$   \\
-\hline
-\end{tabular}
-\end{table}
-
-\vspace{-.8em}
-
-
-\nocite{limdd2}
-\printbibliography[section=\therefsection]
-
-\end{frame}
-\end{refsection}
-
-
+ 
 

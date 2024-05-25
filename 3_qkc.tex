@@ -6,7 +6,7 @@
 	
 \vfill
 
-\vspace{-.5cm}\textbf{\Large A Knowledge Compilation Map for Quantum Information}~\cite{qkcm}\vspace{-.5cm}
+\vspace{-.5cm}\textbf{\Large A Knowledge Compilation Map for Quantum Information}~\cite{vinkhuijzen2024a}\vspace{-.5cm}
 
 \vfill
 
@@ -14,6 +14,26 @@
 \end{refsection}
 
 \end{frame}
+
+
+
+\begin{refframe}{Knowledge Representation}
+
+
+    \begin{block}{A knowledge compilation map~\cite{darwiche2002knowledge}}
+    \begin{itemize}
+    \item  Normal forms for representing Boolean functions: $f(v_1,\dots, v_n) \rightarrow \mathbb B$
+    \item Tradeoff: succinctness vs tractability
+    \end{itemize}  
+    \end{block}
+
+\pause
+
+\includegraphics[width=4cm]{concise}
+\includegraphics[width=6cm]{ops}
+
+\end{refframe}
+
 
 
 \begin{frame}{Comparing Decision Diagrams vs RBM vs MPS}
@@ -157,6 +177,15 @@ MPS is at least as succinct as QMDD.
 
 \end{tikzpicture}
 
+
+\pause
+
+\begin{theorem}
+MPS is exponentially more succinct than QMDD.	
+\end{theorem}
+
+\[\ket \phi = \sum_{x \in \set{0,1}^n} (x)_2 \ket{x} \]
+
 	
 \end{frame}
 
@@ -191,17 +220,23 @@ Take the state: \vspace{-2.5em}
 \begin{align}
 \sumstate = \ket{+}^{\otimes n} + \bigotimes_{j=1}^n(\ket 0+e^{i\pi 2^{-j-1}}\ket 1)
 \end{align}
+
+
+\pause
 MPS: \vspace{-2.5em}
 \begin{align*}
 	    A^{0}_1 = \begin{bmatrix} 1 & 1\end{bmatrix}, ~~~~  &A^{x_j}_j = \begin{bmatrix} 1 &  0 \\ 0 & 1 \end{bmatrix}, ~~~~~~ &&A^{x_n}_n = \begin{bmatrix} 1 \\ 1\end{bmatrix}&\\
 	    A^{x_1}_1 = \begin{bmatrix} 1 & e^{i\pi 2^{-2}}\end{bmatrix}, ~~~~  &A^{x_j}_j = \begin{bmatrix} 1 &  0 \\ 0 & \prod_{j=2}^{n-1}e^{i\pi 2^{-j-1}}\end{bmatrix},  && A^{x_n}_n = \begin{bmatrix} 1 \\ e^{i\pi 2^{-n-1}}&\end{bmatrix},
 	\end{align*}	
 
-LIMDD: There is no LIM mapping subfunctions $f_{\vec a}$ 
-to each other for different ${\vec a}$
+\pause
+LIMDD:
+
+There is no LIM mapping subfunctions $f_{\vec a}$ 
+to each other for different ${\vec a}\in \set{0,1}^{n-1}$:
 \[
 f_{\vec a}(x_1) = 1 + e^{i\pi \sum_{j=2}^n a_j \cdot 2^{-j-1}} \cdot
-e^{i\pi \cdot \nicefrac14 x_1 }.
+e^{i\pi \cdot \nicefrac14 x_1 } \ket{x_1}
 \]
 
 \end{frame}
@@ -336,7 +371,7 @@ e^{i\pi \cdot \nicefrac14 x_1 }.
 \begin{refsection}
 \begin{frame}{A Knowledge Compilation Map for Quantum Information}
 
-\begin{theorem}[Decision Diagram vs MPS vs RBM~\cite{qkcm}]
+\begin{theorem}[Decision Diagram vs MPS vs RBM~\cite{vinkhuijzen2024a}]
 \begin{itemize}
 %	\item is a generalization of QMDD
 %	\item Nodes are merged up to $\gamma \cdot P_1 \otimes \dots \otimes P_n$ with $P_1, \dots, P_n \in \set{\id, X, Y, Z}$
@@ -519,12 +554,19 @@ RBM   & \Yar    & ? & ? & \Cond & \Cond & ? & ? & \Yes & \Yes & \Yes & ? & \Yes 
 		RBM and \limdd are not tractable for \textbf{Fidelity}, unless ETH fails.
 	\end{theorem}
 
+\pause
+
 \textbf{Proof:}
-Let $\ket{D^k_n}$ be the Dicke state on $n$ qubits where all non-zero amplitudes have Hamming weight $k$.
+Let $\ket{D^k_n}$ be the Dicke state on $n$ qubits where basis states corresponding to  non-zero amplitudes have Hamming weight $k$, e.g. $\ket{D^2_3} \equiv \ket{110} + \ket{101} + \ket{011}$.
+
+
+\pause
 
 Let $G_n$ be an $n$-vertex graph and $\ket{G_n}$ be the corresponding graph state.
 
-\alert{The \#EVEN SUBGRAPHS problem reduces to computing the fidelity $\braket{D^k_n| G_n}$}
+\pause
+
+\alert{The \#EVEN SUBGRAPHS problem reduces to computing the fidelity $|\braket{D^k_n| G_n}|^2$}
 
 
 \begin{definition}[\#EVEN SUBGRAPHS]
@@ -533,12 +575,14 @@ Let $G_n$ be an $n$-vertex graph and $\ket{G_n}$ be the corresponding graph stat
 \end{definition}
 
 
+\pause
+
 \begin{theorem}[\citeauthor{jerrum2017parameterised}]
 	\label{thm:even-subgraphs-ETH-hard}
 	If \#EVEN SUBGRAPHS is not in \P, unless ETH is false.
 \end{theorem}
 
-\onslide<2>{\alert{Actually, omitting detail: \#EVEN-ODD-SUBGRAPH-DIFFERENCE}}
+\onslide<+->{\alert{Actually, omitting detail: \#EVEN-ODD-SUBGRAPH-DIFFERENCE}}
 
 \printbibliography[section=\therefsection]
 
@@ -554,7 +598,7 @@ Let $G_n$ be an $n$-vertex graph and $\ket{G_n}$ be the corresponding graph stat
 
 \begin{alertblock}{Downsides of operation tractability}
 	\begin{itemize}
-	\item Only compares worst cases.
+	\item<+-> Only compares worst cases.
 	\begin{itemize}
 	\item ADD is tractable for all gates
 	\item QMDD is intractable for e.g. Hadamard
@@ -568,7 +612,7 @@ Let $G_n$ be an $n$-vertex graph and $\ket{G_n}$ be the corresponding graph stat
 	\end{itemize}
 \end{alertblock}
 
-
+\centering 
 \setlength{\tabcolsep}{2pt}
 \def\arraystretch{1.1}
 \footnotesize
@@ -710,45 +754,45 @@ RBM   & \Yar    & ? & ? & \alert{\Cond} & \alert{\Cond} & ? & ? & \Yes & \Yes & 
 %\end{refsection}
 
 
-\begin{frame}{Take Aways}
-
-\begin{block}{Decision Diagrams in Quantum Computing}
-\begin{itemize}[<+->]
-	\item Better data structures yield better circuit simulation, equivalence checks \& synthesis
-	\item \limdd unites the strengths of decision diagrams and the stabilizer formalism
-	\item \limdd, MPS and RBM are incomparable in terms of succinctness
-	\item Rapidity tells us that MPS and \limdd are never much slower than QMDD, ADD
-\end{itemize}
-\end{block}
-
-\centering
-
-\begin{tikzpicture}\footnotesize
-  \tikzset{venn circle/.style={circle,minimum width=2cm,fill=####1,opacity=0.4}}
-  \node [venn circle=white,minimum width=4cm,draw] (A) at (0,0.3) {};
-  \node  at (0,1.95) 			{State space};
-
-  \node [venn circle = Red!40!white, ellipse,minimum height=2.2cm, minimum width=3.6cm] (L) at (0,0.6) {};
-  \node  at (0,1.5) 		{\limdd};
-  
-  \node [venn circle = blue!70!white,text width=1.3cm,align=center,rotate=79,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (-.6,-.2) {};
-  \node[text width=1.3cm,align=center]  at (-.9,-1.) {MPS};
-
-
-  \node [venn circle = green!70!white,text width=1.3cm,align=center,rotate=119,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (.6,-.2) {};
-  \node[text width=1.3cm,align=center]  at (.9,-1.) {RBM};
-
-
-
-  \node [venn circle = Blue!100!white,text width=1cm,align=center, minimum width=1.cm] (B) at (-.5,.3) 	{\textcolor{white}{QMDD}};						
-
-  \node [venn circle = OliveGreen!100!white,text width=1cm,align=center, minimum width=1.cm] (C) at (.5,.2) {\textcolor{white}{Stabilizer states}};
-
-\end{tikzpicture}
-~~~~~
-\includegraphics[width=3cm]{limdd}
-
-\end{frame}
+%\begin{frame}{Take Aways}
+%
+%\begin{block}{Decision Diagrams in Quantum Computing}
+%\begin{itemize}[<+->]
+%	\item Better data structures yield better circuit simulation, equivalence checks \& synthesis
+%	\item \limdd unites the strengths of decision diagrams and the stabilizer formalism
+%	\item \limdd, MPS and RBM are incomparable in terms of succinctness
+%	\item Rapidity tells us that MPS and \limdd are never much slower than QMDD, ADD
+%\end{itemize}
+%\end{block}
+%
+%\centering
+%
+%\begin{tikzpicture}\footnotesize
+%  \tikzset{venn circle/.style={circle,minimum width=2cm,fill=####1,opacity=0.4}}
+%  \node [venn circle=white,minimum width=4cm,draw] (A) at (0,0.3) {};
+%  \node  at (0,1.95) 			{State space};
+%
+%  \node [venn circle = Red!40!white, ellipse,minimum height=2.2cm, minimum width=3.6cm] (L) at (0,0.6) {};
+%  \node  at (0,1.5) 		{\limdd};
+%  
+%  \node [venn circle = blue!70!white,text width=1.3cm,align=center,rotate=79,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (-.6,-.2) {};
+%  \node[text width=1.3cm,align=center]  at (-.9,-1.) {MPS};
+%
+%
+%  \node [venn circle = green!70!white,text width=1.3cm,align=center,rotate=119,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (.6,-.2) {};
+%  \node[text width=1.3cm,align=center]  at (.9,-1.) {RBM};
+%
+%
+%
+%  \node [venn circle = Blue!100!white,text width=1cm,align=center, minimum width=1.cm] (B) at (-.5,.3) 	{\textcolor{white}{QMDD}};						
+%
+%  \node [venn circle = OliveGreen!100!white,text width=1cm,align=center, minimum width=1.cm] (C) at (.5,.2) {\textcolor{white}{Stabilizer states}};
+%
+%\end{tikzpicture}
+%~~~~~
+%\includegraphics[width=3cm]{limdd}
+%
+%\end{frame}
 
 
 
