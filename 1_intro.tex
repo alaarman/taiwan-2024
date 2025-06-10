@@ -298,7 +298,7 @@
 
 \begin{frame}{This Talk}
 	
-
+\vspace{-5em}
 \begin{block}{Quantum Computing with \#SAT}
 	
 	
@@ -335,8 +335,8 @@
 \centering
 ~~~~~~~~\begin{tikzpicture}\footnotesize
   \tikzset{venn circle/.style={circle,minimum width=2cm,fill=####1,opacity=0.4}}
-  \node [venn circle=white,minimum width=4cm,draw] (A) at (0,0.3) {};
-  \node  at (0,1.95) 			{State space};
+  \node [venn circle=white,minimum width=4.5cm,draw] (A) at (0,0.3) {};
+  \node  at (0,2.15) 			{State space};
 
   \node [venn circle = Red!40!white, ellipse,minimum height=2.2cm, minimum width=3.6cm] (L) at (0,0.6) {};
   \node  at (0,1.5) 		{poly-\alert{\limdd}};
@@ -345,12 +345,12 @@
   \node[text width=1.3cm,align=center]  at (-.7,-1.) {poly-MPS};
 
 
-  \node [venn circle = green!70!white,text width=1.3cm,align=center,rotate=119,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (.6,-.2) {};
-  \node[text width=1.3cm,align=center]  at (.9,-1.) {poly-RBM};
+  \node [venn circle = green!70!white,text width=1.3cm,align=center,rotate=119,ellipse,minimum height=1.8cm, minimum width=2.5cm] (B) at (.8,-.2) {};
+  \node[text width=1.3cm,align=center]  at (1,-1.) {poly-RBM};
 
 
 
-  \node [venn circle = Blue!100!white,text width=1cm,align=center, minimum width=1.cm] (B) at (-.5,.3) 	{\textcolor{white}{poly-QMDD}};						
+  \node [venn circle = Blue!100!white,text width=1cm,align=center, minimum width=1.cm] (B) at (-.5,.3) 	{\textcolor{white}{poly-EVDD}};						
 
   \node [venn circle = OliveGreen!100!white,text width=1cm,align=center, minimum width=1.cm] (C) at (.5,.2) {\textcolor{white}{Stabilizer states}};
 
@@ -374,7 +374,7 @@ ADD   	& \Yar	& \Yes	& \Yes	& \Yes & \Yes
 %		| Add	| H		| XYZ	| CX	| Swap	| Local	| T
 		& \Yes	& \Yes 	& \Yes	& \Yes	& \Yes	& \Yes	& \Yes \\
 \hline
-QMDD
+EVDD
 		& \Yar	& \Yes	& \Yes	& \Yes & \Yes
 		& \No	& \No 	& \Yes	& \Yes	& \No	& \No	& \Yes \\
 \hline 
